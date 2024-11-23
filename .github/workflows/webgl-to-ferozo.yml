@@ -1,9 +1,9 @@
 name: 🚀 Build and Deploy WebGL
 
 on:
-  push:
-    branches:
-      - main
+  release:
+    types:
+      - published
 
 jobs:
   build-and-deploy:
