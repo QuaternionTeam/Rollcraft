@@ -1,0 +1,6 @@
+internal abstract class Dice
+{
+
+}
+
+
