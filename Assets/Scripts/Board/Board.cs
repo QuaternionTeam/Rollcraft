@@ -39,12 +39,8 @@ public class Board : MonoBehaviour
         InstantiateSquare(finalBossPrefab, finalPosX, finalPosY);
 
         // Final branches
-        InstantiateSquare(emptyPrefab, finalPosX, finalPosY - 1);
-        InstantiateSquare(combatPrefab, finalPosX, finalPosY - 2);
         InstantiateSquare(emptyPrefab, finalPosX - 1, finalPosY - 1);
-        InstantiateSquare(emptyPrefab, finalPosX - 2, finalPosY - 1);
         InstantiateSquare(emptyPrefab, finalPosX + 1, finalPosY - 1);
-        InstantiateSquare(emptyPrefab, finalPosX + 2, finalPosY - 1);
 
         // Main branches
         foreach (int posX in new int[] { finalPosX - 2, finalPosX, finalPosX + 2 })
