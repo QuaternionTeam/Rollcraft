@@ -1,0 +1,49 @@
+name: Build and Deploy WebGL
+
+on:
+  release:
+    types:
+      - published # Trigger only when a release is published
+
+jobs:
+  build-and-deploy:
+    name: 🚀 Build and Deploy WebGL
+    runs-on: ubuntu-latest
+    steps:
+      # Step 1: Checkout the repository
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      # Step 2: Set up Unity and build the WebGL project
+      - name: Setup Unity
+        uses: game-ci/unity-builder@v2
+        with:
+          unityVersion: 2022.3.0f1 # Replace with your Unity version
+          targetPlatform: WebGL
+
+      # Step 3: Install FTP client
+      - name: Install FTP client
+        run: sudo apt-get install -y lftp
+
+      # Step 4: Upload necessary files via FTP
+      - name: Upload files via FTP
+        env:
+          FTP_SERVER: ${{ secrets.FEROZO_USER }}.ferozo.com
+          FTP_USERNAME: ${{ secrets.FEROZO_USER }}
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+          PROJECT_NAME: ${{ secrets.PROJECT_NAME }}
+        run: |
+          # Navigate to the WebGL build folder
+          cd build/WebGL/Build
+
+          # Use lftp to upload only the required files
+          lftp -u "$FTP_USERNAME","$FTP_PASSWORD" -e "
+            mirror -R --verbose \
+              --exclude-glob '*' \
+              --include-glob Build.loader.js \
+              --include-glob Build.framework.js \
+              --include-glob Build.data \
+              --include-glob Build.wasm \
+              . /public_html/games/${PROJECT_NAME};
+            bye
+          " ftp://$FTP_SERVER || true
