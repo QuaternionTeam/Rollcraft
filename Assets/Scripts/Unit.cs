@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 internal abstract class Unit
@@ -7,24 +9,25 @@ internal abstract class Unit
     internal Dice dice;
     internal List<Status> statuses;
 
-    internal void recieveAttack(int damage)
+    internal void RecieveAttack(int damage)
     {
-        recieveDamage(damage);
+        RecieveDamage(damage);
 
-        statuses.OnRecieveDamage()
+        foreach(Status status in statuses)
+            status.OnRecieveDamage(this, damage);
     }
 
-    internal void recieveDamage(int damage)
+    internal void RecieveDamage(int damage)
     {
-        this.healthPoints = Math.Max(healthPoints-damage,0);
+        healthPoints = Math.Max(healthPoints-damage,0);
         //TODO: Await Dagame Anim
-        if(healthPoints==0)
-            Die()
+        if (healthPoints == 0)
+            Die();
     }
 
-    internal void recieveHealing(int heal)
+    internal void RecieveHealing(int healing)
     {
-        this.healthPoints = Math.Max(healthPoints+damage, maxHealthPoints);
+        this.healthPoints = Math.Max(healthPoints+healing, maxHealthPoints);
         //TODO: Await Healing Anim
     }
 
