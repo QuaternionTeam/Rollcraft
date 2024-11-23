@@ -1,7 +1,8 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
-internal abstract class Unit
+internal abstract class Unit : MonoBehaviour
 {
     public int maxHealthPoints;
     public int healthPoints;
@@ -16,6 +17,7 @@ internal abstract class Unit
     {
         shield = 0;
     }
+    
     internal void RecieveAttack(int damage)
     {
         int damageAfterShield = DamageAfterShield(damage);
