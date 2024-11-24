@@ -8,45 +8,31 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-
+    
     steps:
-      # Checkout code
-      - name: Checkout Code
+      # Step 1: Checkout the repository
+      - name: Checkout code
         uses: actions/checkout@v3
 
-      # Activate Unity License
-      - name: Activate Unity License
-        uses: game-ci/unity-activate@v2
+      # Step 2: Set up Unity (using a Unity setup action)
+      - name: Setup Unity
+        uses: game-ci/unity-action@v2
         with:
-          unityLicense: ${{ secrets.UNITY_LICENSE }}
-
-      # Build WebGL
-      - name: Build WebGL
-        uses: game-ci/unity-builder@v2
-        with:
-          unityVersion: 2022.3.0f1 # Replace with your Unity version
-          targetPlatform: WebGL
-
-      # Install FTP client
-      - name: Install FTP client
-        run: sudo apt-get install -y lftp
-
-      # Upload files via FTP
-      - name: Upload files via FTP
-        env:
-          FTP_SERVER: ${{ secrets.FEROZO_USER }}.ferozo.com
-          FTP_USERNAME: ${{ secrets.FEROZO_USER }}
-          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
-          PROJECT_NAME: ${{ secrets.PROJECT_NAME }}
+          version: 2023.1.0f1  # TODO : Chequear la versión que necesitamos pa que corra piola
+          licenseFile: ${{ secrets.UNITY_LICENSE }}  # If you're using a Unity license
+          
+      # Step 3: Build the WebGL project using Unity CLI
+      - name: Build WebGL Project
         run: |
-          cd build/WebGL/Build
-          lftp -u "$FTP_USERNAME","$FTP_PASSWORD" -e "
-            mirror -R --verbose \
-              --exclude-glob '*' \
-              --include-glob Build.loader.js \
-              --include-glob Build.framework.js \
-              --include-glob Build.data \
-              --include-glob Build.wasm \
-              . /public_html/${PROJECT_NAME};
-            bye
-          " ftp://$FTP_SERVER || true
+          unity -batchmode -nographics -quit -projectPath ./path/to/your/unity/project -buildTarget WebGL -executeMethod BuildScript.PerformBuild -logFile ./build.log
+
+      # Step 4: Upload WebGL build to FTP
+      - name: Deploy to FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4
+        with:
+          server: ${{ secrets.FEROZO_USER }}.ferozo.com
+          username: ${{ secrets.FEROZO_USER }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./Builds/WebGL  # The folder where Unity outputs the WebGL build
+          remote-dir: /public_html/game-builds/${{ secrets.PROJECT_NAME }}
+          clean: true
