@@ -9,7 +9,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     container:
-      image: unityci/editor:2023.1.0f1  # Use an appropriate Unity version
+      image: unityci/editor:ubuntu-6000.0.28f1-webgl-3.1  # Use an appropriate Unity version
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
