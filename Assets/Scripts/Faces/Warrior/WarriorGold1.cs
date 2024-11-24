@@ -8,10 +8,8 @@ internal class WarriorGold1 : Face
     
     public WarriorGold1(Unit unit) : base(unit) { }
 
-    internal override void ApplyEffect() 
-    {
-        base.ApplyEffect();
+    internal override string EffectString => "5 DMG";
 
-        enemies.First().RecieveAttack(5);
-    }
+    [Neutral]
+    internal void NeutralAttack() => Attack(enemyTarget, 5);
 }

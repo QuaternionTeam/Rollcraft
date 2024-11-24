@@ -8,10 +8,8 @@ internal class WarriorViolet1 : Face
 
     public WarriorViolet1(Unit unit) : base(unit) { }
 
-    internal override void ApplyEffect() 
-    {
-        base.ApplyEffect();
+    internal override string EffectString => "3 DMG";
 
-        enemies.First().RecieveAttack(3);
-    }
+    [Neutral]
+    internal void NeutralAttack() => Attack(enemyTarget, 3);
 }

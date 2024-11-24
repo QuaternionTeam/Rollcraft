@@ -6,6 +6,8 @@ internal class ArcherBlue3 : Face
 
     internal override TargetsCount AdventurersCount => TargetsCount.None;
 
+    internal override string EffectString => "1 DMG (All)";
+    
     [Neutral]
     internal void NeutralAttack() => AttackAllEnemies(1);
 }

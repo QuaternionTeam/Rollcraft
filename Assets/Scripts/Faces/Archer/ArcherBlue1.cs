@@ -8,6 +8,8 @@ internal class ArcherBlue1 : Face
 
     internal override TargetsCount AdventurersCount => TargetsCount.None;
 
+    internal override string EffectString => "1 DMG Twice";
+
     [Neutral]
     internal void FirstAttack() => Attack(enemyTarget, 1);
 

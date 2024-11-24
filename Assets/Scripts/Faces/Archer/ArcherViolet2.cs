@@ -8,6 +8,8 @@ internal class ArcherViolet2 : Face
 
     internal override TargetsCount AdventurersCount => TargetsCount.None;
 
+    internal override string EffectString => "On Land: +1 Reroll\n1 DMG Twice";
+
     [OnLand]
     internal void ObtainReroll()
     {
