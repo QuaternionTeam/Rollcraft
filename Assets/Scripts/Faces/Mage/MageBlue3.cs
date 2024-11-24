@@ -2,16 +2,14 @@ using System.Linq;
 
 internal class MageBlue3 : Face
 {
-    internal override TargetsCount EnemiesCount => TargetsCount.None;
+    internal override TargetsCount EnemiesCount => TargetsCount.One;
 
-    internal override TargetsCount AdventurersCount => TargetsCount.One;
+    internal override TargetsCount AdventurersCount => TargetsCount.None;
+
+    internal override string EffectString => "2 Heal";
 
     public MageBlue3(Unit unit) : base(unit) { }
 
-    internal override void ApplyEffect() 
-    {
-        base.ApplyEffect();
-
-        adventurers.First().RecieveHealing(2);
-    }
+    [Neutral]
+    internal void Healing() => Heal(adventurerTarget, 2);
 }

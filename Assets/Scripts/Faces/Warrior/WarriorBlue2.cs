@@ -10,14 +10,12 @@ internal class WarriorBlue2 : Face
 
     public WarriorBlue2(Unit unit) : base(unit) { }
 
-    internal override void ApplyEffect() 
-    {
-        base.ApplyEffect();
+    internal override string EffectString => "\nFast: 2 Shield\nSlow: 2 DMG";
 
-        if(unit.quickness == Quickness.Fast)
-            enemies.First().RecieveShield(2);
+    [Fast]
+    internal void SlowAttack() => Protect(adventurerTarget, 2);
 
-        if(unit.quickness == Quickness.Slow)
-            enemies.First().RecieveAttack(2);
-    }
+    [Slow]
+    internal void FastAttack() => Attack(enemyTarget, 2);
+    
 }

@@ -8,17 +8,14 @@ internal class MageViolet1 : Face
 
     public MageViolet1(Unit unit) : base(unit) { }
 
-    internal override void ApplyEffect() 
-    {
-        base.ApplyEffect();
-        int damage = 4;
+    internal override string EffectString => "4 DMG\nFast: -2 DMG\nSlow: +2 DMG";
 
-        if(unit.quickness == Quickness.Fast)
-            damage -= 2;
+    [Fast]
+    internal void FastAttack() => Attack(enemyTarget, 2);
 
-        if(unit.quickness == Quickness.Slow)
-            damage += 2;
+    [Mid]
+    internal void MidAttack() => Attack(enemyTarget, 4);
 
-        enemies.First().RecieveAttack(damage);
-    }
+    [Slow]
+    internal void SlowAttack() => Attack(enemyTarget, 6);
 }

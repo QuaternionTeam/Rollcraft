@@ -8,10 +8,8 @@ internal class WarriorBlue3 : Face
 
     internal override TargetsCount AdventurersCount => TargetsCount.None;
 
-    internal override void ApplyEffect() 
-    {
-        base.ApplyEffect();
+    internal override string EffectString => "Apply Dizzy";
 
-        enemies.First().ApplyStatus(new DizzyStatus());
-    }
+    [Neutral]
+    internal void ApplyDizzy() => Apply(enemyTarget, new DizzyStatus());
 }

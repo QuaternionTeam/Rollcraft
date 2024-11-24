@@ -8,17 +8,14 @@ internal class MageBlue2 : Face
 
     internal override TargetsCount AdventurersCount => TargetsCount.None;
 
-    internal override void ApplyEffect() 
-    {
-        base.ApplyEffect();
-        int damage = 2;
+    internal override string EffectString => "2 DMG\nFast: -1 DMG\nSlow: +1 DMG";
 
-        if(unit.quickness == Quickness.Fast)
-            damage -= 1;
+    [Fast]
+    internal void FastAttack() => Attack(enemyTarget, 1);
 
-        if(unit.quickness == Quickness.Slow)
-            damage +=1;
+    [Mid]
+    internal void MidAttack() => Attack(enemyTarget, 2);
 
-        enemies.First().RecieveAttack(damage);
-    }
+    [Slow]
+    internal void SlowAttack() => Attack(enemyTarget, 3);
 }

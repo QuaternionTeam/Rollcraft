@@ -6,8 +6,11 @@ internal abstract class Face
 {
     internal List<MethodInfo> FastMethods { get; private set; } = new List<MethodInfo>();
     internal List<MethodInfo> SlowMethods { get; private set; } = new List<MethodInfo>();
+    internal List<MethodInfo> MidMethods { get; private set; } = new List<MethodInfo>();
     internal List<MethodInfo> NeutralMethods { get; private set; } = new List<MethodInfo>();
     internal List<MethodInfo> OnLandMethods { get; private set; } = new List<MethodInfo>();
+
+    internal abstract string EffectString { get; }
 
     protected readonly Unit unit;
     internal Enemy enemyTarget = null;
@@ -80,6 +83,12 @@ internal abstract class Face
         unit.ApplyStatus(status);
     }
 
+    internal void ApplyAllEnemies(Status status)
+    {
+        foreach(Enemy enemy in CombatSystem.enemies)
+            enemy.ApplyStatus(status);
+    }
+
        private void AddCustomlyDecoratedMethods()
     {
         var methods = this.GetType()
@@ -105,6 +114,12 @@ internal abstract class Face
         methods = this.GetType()
                           .GetMethods(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)
                           .Where(m => m.GetCustomAttribute<OnLandAttribute>() != null)
+                          .ToList();
+        OnLandMethods.AddRange(methods);
+
+        methods = this.GetType()
+                          .GetMethods(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)
+                          .Where(m => m.GetCustomAttribute<MidAttribute>() != null)
                           .ToList();
         OnLandMethods.AddRange(methods);
     } 

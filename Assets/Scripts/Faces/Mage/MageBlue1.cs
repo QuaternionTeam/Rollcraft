@@ -8,17 +8,12 @@ internal class MageBlue1 : Face
 
     internal override TargetsCount AdventurersCount => TargetsCount.None;
 
-    internal override void OnLand()
-    {
-        base.OnLand();
-    }
+    internal override string EffectString => "1 DMG & Apply Shocked";
 
-    internal override void ApplyEffect() 
-    {
-        base.ApplyEffect();
+    [Neutral]
+    internal void NeutralAttack() => Attack(enemyTarget, 1);
 
-        enemies.First().RecieveAttack(1);
+    [Neutral]
+    internal void Shock() => Apply(enemyTarget, new ShockedStatus());
 
-        enemies.First().ApplyStatus(new ShockedStatus());
-    }
 }

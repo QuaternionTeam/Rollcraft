@@ -8,14 +8,9 @@ internal class MageGold1 : Face
 
     public MageGold1(Unit unit) : base(unit) { }
 
-    internal override void ApplyEffect() 
-    {
-        base.ApplyEffect();
-        
-        foreach (var enemy in enemies)
-        {
-            enemy.RecieveAttack(2);
-            enemy.ApplyStatus(new ShockedStatus());
-        }
-    }
+    [Neutral]
+    internal void NeutralAttack() => AttackAllEnemies(2);
+
+    [Neutral]
+    internal void ShockAllEnemies() => ApplyAllEnemies(new ShockedStatus());
 }
