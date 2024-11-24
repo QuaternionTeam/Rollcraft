@@ -17,6 +17,9 @@ internal class GameData : MonoBehaviour
 
     private string saveFilePath => Application.persistentDataPath + "/PlayerData.json";
 
+    internal bool generated = false;
+    internal SquareType[,] grid = new SquareType[Board.realWidth, Board.realHeight];
+
     void Awake()
     {
         instance = this;
@@ -37,17 +40,16 @@ internal class GameData : MonoBehaviour
 
     void Load()
     {
-        Debug.Log(saveFilePath);
-        if (File.Exists(saveFilePath))
-        {
-            string loadPlayerData = File.ReadAllText(saveFilePath);
-            _playerData = JsonUtility.FromJson<Data>(loadPlayerData);
-        }
-        else
-        {
-            _playerData = new Data();
-            Save();
-        }
+        // if (File.Exists(saveFilePath))
+        // {
+        //     string loadPlayerData = File.ReadAllText(saveFilePath);
+        //     _playerData = JsonUtility.FromJson<Data>(loadPlayerData);
+        // }
+        // else
+        // {
+        _playerData = new Data();
+        Save();
+        // }
     }
 
     internal void AddRerroll()

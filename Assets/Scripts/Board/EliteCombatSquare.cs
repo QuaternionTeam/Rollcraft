@@ -7,4 +7,6 @@ public class EliteCombatSquare : Square
         if (board.IsSelectable(gridPosX, gridPosY))
             board.MovePlayer(gridPosX, gridPosY);
     }
+
+    internal override SquareType Type() => SquareType.Combat;
 }

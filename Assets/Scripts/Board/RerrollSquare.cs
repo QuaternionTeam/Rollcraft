@@ -11,4 +11,6 @@ public class RerrollSquare : Square
             BoardMenu.instance.UpdateRerrolls();
         }
     }
+
+    internal override SquareType Type() => SquareType.Rerroll;
 }

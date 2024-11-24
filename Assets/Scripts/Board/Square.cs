@@ -15,4 +15,5 @@ public abstract class Square : MonoBehaviour
 
     internal abstract bool Walkable();
     internal abstract void OnMouseDown();
+    internal abstract SquareType Type();
 }

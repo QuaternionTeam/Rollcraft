@@ -16,7 +16,10 @@ public class BoardMenu : MonoBehaviour
 
     public void OnMenuButton()
     {
-        SceneManager.LoadScene("MainMenu");
+        if (SceneManager.GetActiveScene().name == "Combat")
+            SceneManager.LoadScene("Board");
+        else
+            SceneManager.LoadScene("MainMenu");
     }
 
     internal void UpdateRerrolls()

@@ -1,17 +1,34 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+enum SquareType
+{
+    Null,
+    Empty,
+    Combat,
+    Rerroll,
+    FinalBoss
+}
+
 public class Board : MonoBehaviour
 {
     private const int width = 5, height = 9;
-    private const int realWidth = width * 2 - 1, realHeight = height * 2 - 1;
+    internal static int realWidth = width * 2 - 1, realHeight = height * 2 - 1;
     private const float squareSize = 1.25f;
 
     [SerializeField] private GameObject emptyPrefab, finalBossPrefab, combatPrefab, eliteCombatPrefab, rerollPrefab;
     [SerializeField] private Player player;
 
     private Square[,] grid = new Square[realWidth, realHeight];
-    private int playerGridLocationX = -1, playerGridLocationY = -1;
+    private static int playerGridLocationX = -1, playerGridLocationY = -1;
+
+    private static readonly List<List<Enemy>> combats = new List<List<Enemy>> {
+        new List<Enemy> { },
+        new List<Enemy> { },
+        new List<Enemy> { },
+        new List<Enemy> { },
+        new List<Enemy> { }
+    };
 
     void Start()
     {
@@ -42,6 +59,45 @@ public class Board : MonoBehaviour
     }
 
     private void Initialize()
+    {
+        if (!GameData.instance.generated)
+        {
+            GenerateRandomBoard();
+            for (int posX = 0; posX < realWidth; posX++)
+            {
+                for (int posY = 0; posY < realHeight; posY++)
+                {
+                    if (grid[posX, posY])
+                        GameData.instance.grid[posX, posY] = grid[posX, posY].Type();
+                    else
+                        GameData.instance.grid[posX, posY] = SquareType.Null;
+                }
+            }
+            GameData.instance.generated = true;
+        }
+        else
+        {
+            for (int posX = 1; posX <= realWidth; posX++)
+            {
+                for (int posY = 1; posY <= realHeight; posY++)
+                {
+                    if (GameData.instance.grid[posX - 1, posY - 1] == SquareType.Empty)
+                        InstantiateSquare(emptyPrefab, posX, posY);
+                    else if (GameData.instance.grid[posX - 1, posY - 1] == SquareType.Combat)
+                        InstantiateSquare(combatPrefab, posX, posY);
+                    else if (GameData.instance.grid[posX - 1, posY - 1] == SquareType.Rerroll)
+                        InstantiateSquare(rerollPrefab, posX, posY);
+                    else if (GameData.instance.grid[posX - 1, posY - 1] == SquareType.FinalBoss)
+                        InstantiateSquare(finalBossPrefab, posX, posY);
+                }
+            }
+            player.transform.position = grid[playerGridLocationX - 1, playerGridLocationY - 1].transform.position;
+            player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, -1f);
+            player.Activate();
+        }
+    }
+
+    private void GenerateRandomBoard()
     {
         chests = 0;
         chestList = new List<int>();
@@ -120,5 +176,12 @@ public class Board : MonoBehaviour
         player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, -1f);
         playerGridLocationX = gridPosX;
         playerGridLocationY = gridPosY;
+    }
+
+    internal static List<Enemy> GetRandomList()
+    {
+        int index = Random.Range(0, combats.Count);
+        List<Enemy> combat = combats[index];
+        return combat;
     }
 }
