@@ -23,7 +23,7 @@ jobs:
       # Step 3: Build the WebGL project using Unity CLI
       - name: Build WebGL Project
         run: |
-          unity -batchmode -nographics -quit -projectPath ./path/to/your/unity/project -buildTarget WebGL -executeMethod BuildScript.PerformBuild -logFile ./build.log
+          unity -batchmode -nographics -quit -projectPath . -buildTarget WebGL -executeMethod BuildScript.PerformBuild -logFile ./build.log
 
       # Step 4: Upload WebGL build to FTP
       - name: Deploy to FTP
