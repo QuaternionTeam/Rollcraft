@@ -1,6 +1,7 @@
 using System.Collections.Generic;
+using UnityEngine;
 
-internal class CombatSystem
+internal class CombatSystem: MonoBehaviour
 {
     internal readonly List<Adventurer> adventurers;
     internal readonly List<Enemy> enemies;
@@ -9,7 +10,7 @@ internal class CombatSystem
 
     internal CombatSystemState State;
 
-    internal CombatSystem() 
+    internal void Awake() 
     { 
         State = new EnemyRollState(this);
     }
