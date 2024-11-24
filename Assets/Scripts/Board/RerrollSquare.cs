@@ -5,6 +5,10 @@ public class RerrollSquare : Square
     internal override void OnMouseDown()
     {
         if (board.IsSelectable(gridPosX, gridPosY))
+        {
             board.MovePlayer(gridPosX, gridPosY);
+            GameData.instance.AddRerroll();
+            BoardMenu.instance.UpdateRerrolls();
+        }
     }
 }

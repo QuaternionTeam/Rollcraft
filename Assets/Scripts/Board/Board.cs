@@ -28,8 +28,24 @@ public class Board : MonoBehaviour
         return newSquare;
     }
 
+    private int chests = 0;
+    private List<int> chestList = new List<int>();
+    private Square InstantiateCombatOrChest(int gridPosX, int gridPosY)
+    {
+        if (chests < 4 && Random.Range(0f, 1f) < 0.3 && gridPosY > 4 && !chestList.Contains(gridPosX)) {
+            chests++;
+            chestList.Add(gridPosX);
+            return InstantiateSquare(rerollPrefab, gridPosX, gridPosY);
+        }
+        else
+            return InstantiateSquare(combatPrefab, gridPosX, gridPosY);
+    }
+
     private void Initialize()
     {
+        chests = 0;
+        chestList = new List<int>();
+
         // Start at final position
         int finalPosX = (realWidth + 1) / 2;
         int finalPosY = realHeight;
@@ -44,7 +60,7 @@ public class Board : MonoBehaviour
             for (int posY = finalPosY - 1; posY >= 2; posY -= 2)
             {
                 InstantiateSquare(emptyPrefab, posX, posY);
-                InstantiateSquare(combatPrefab, posX, posY - 1);
+                InstantiateCombatOrChest(posX, posY - 1);
             }
 
         // Border branches
@@ -54,7 +70,7 @@ public class Board : MonoBehaviour
             for (int posY = maxPosY; posY >= 2; posY -= 2)
             {
                 InstantiateSquare(emptyPrefab, posX, posY);
-                InstantiateSquare(combatPrefab, posX, posY - 1);
+                InstantiateCombatOrChest(posX, posY - 1);
             }
             InstantiateSquare(emptyPrefab, finalPosX + ((posX - finalPosX) / 4 * 3), maxPosY);
         }
