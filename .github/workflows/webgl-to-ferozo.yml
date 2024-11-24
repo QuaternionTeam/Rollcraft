@@ -8,23 +8,25 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    container:
-      image: unityci/editor:ubuntu-6000.0.28f1-webgl-3.1  # Use an appropriate Unity version
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Set up Unity Project
+      - name: Download Unity
         run: |
-          # Install dependencies for Unity build (if any)
-          sudo apt-get update
-          sudo apt-get install -y libunwind8 libssl1.0.0
-          
+          wget -O Unity.tar.xz https://download.unity3d.com/download_unity/f336aca0cab5/LinuxEditorInstaller/Unity-6000.0.28f1.tar.xz
+          tar -xf Unity.tar.xz -C /opt/
+          sudo chmod -R +x /opt/Unity
+
       - name: Build Unity project
         run: |
-          # Run Unity build command inside Docker container
-          /opt/unity/Editor/Unity -batchmode -quit -projectPath $GITHUB_WORKSPACE -buildTarget WebGL -executeMethod BuildScript.PerformBuild -logFile
-          
+          /opt/Unity/Editor/Unity -batchmode -quit \
+          -projectPath $GITHUB_WORKSPACE \
+          -buildTarget WebGL \
+          -executeMethod BuildScript.PerformBuild \
+          -logFile build.log
+
       - name: Instalar cliente FTP
         run: sudo apt-get install -y lftp
   
