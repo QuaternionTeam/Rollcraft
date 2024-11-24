@@ -7,6 +7,5 @@ internal class ArcherBlue3 : Face
     internal override TargetsCount AdventurersCount => TargetsCount.None;
 
     [Neutral]
-    internal void NeutralAttack() => Attack(enemyTarget, 1);
-    //TODO ENEMYTARGET -> AllEnemies
+    internal void NeutralAttack() => AttackAllEnemies(1);
 }

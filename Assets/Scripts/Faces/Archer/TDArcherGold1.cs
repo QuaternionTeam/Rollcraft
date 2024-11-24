@@ -9,9 +9,8 @@ internal class ArcherGold1 : Face
     internal override TargetsCount AdventurersCount => TargetsCount.None;
 
     [Neutral]
-    internal void FirstAttack() => Attack(enemyTarget, 1);
+    internal void FirstAttack() => AttackAllEnemies(1);
 
     [Neutral]
-    internal void SecondAttack() => Attack(enemyTarget, 1);
-    //TODO ENEMYTARGET -> AllEnemies
+    internal void SecondAttack() => AttackAllEnemies(1);
 }
