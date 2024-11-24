@@ -6,6 +6,7 @@ public class DiceManager : MonoBehaviour
 
     public bool dragging;
     public bool target;
+    public GameObject targetGameObject;
     public Vector3 initialPosition;
 
     public bool diceClicked;
@@ -100,14 +101,20 @@ public class DiceManager : MonoBehaviour
     void OnTriggerStay2D(Collider2D collider)
     {
         if (collider.gameObject.GetComponent<Rigidbody2D>() != null)
+        {
             target = true;
+            targetGameObject = collider.gameObject;
+        }
     }
 
 
 
     public void applyDiceEffect()
     {
-        print("aplicaste el efecto");
+        if (targetGameObject.GetComponent<Unit>())
+        {
+
+        }
         diceObject.SetActive(false);
         canUseDice = false;
         target= false;

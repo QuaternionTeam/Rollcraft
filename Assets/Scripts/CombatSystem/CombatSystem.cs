@@ -13,6 +13,9 @@ internal class CombatSystem: MonoBehaviour
     internal void Awake() 
     { 
         State = new EnemyRollState(this);
+        Instantiate(enemies[0], new Vector3(-1, 2, 0), Quaternion.identity);
+        Instantiate(enemies[0], new Vector3(0, 2.5f, 0), Quaternion.identity);
+        Instantiate(enemies[0], new Vector3(1, 2, 0), Quaternion.identity);
     }
 
     internal void Update() 

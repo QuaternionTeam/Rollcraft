@@ -22,16 +22,11 @@ public class Board : MonoBehaviour
     private Square[,] grid = new Square[realWidth, realHeight];
     private static int playerGridLocationX = -1, playerGridLocationY = -1;
 
-    private static readonly List<List<Enemy>> combats = new List<List<Enemy>> {
-        new List<Enemy> { },
-        new List<Enemy> { },
-        new List<Enemy> { },
-        new List<Enemy> { },
-        new List<Enemy> { }
-    };
+    [SerializeField] internal Enemy wolf, alphaWolf, goblin, goblinLancer, goblinLeader;
 
     void Start()
     {
+        combat = new List<Enemy> { wolf, wolf, wolf };
         transform.position = new Vector3(-realWidth * squareSize / 2, -realHeight * squareSize / 2, 0f);
         Initialize();
     }
@@ -178,10 +173,24 @@ public class Board : MonoBehaviour
         playerGridLocationY = gridPosY;
     }
 
+    private static List<List<Enemy>> combats = null;
+    private static List<Enemy> combat = null;
     internal static List<Enemy> GetRandomList()
     {
-        int index = Random.Range(0, combats.Count);
-        List<Enemy> combat = combats[index];
+        // if (combats == null)
+        // {
+        //     List<List<Enemy>> combats = new List<List<Enemy>> {
+        //         new List<Enemy> { },
+        //         new List<Enemy> { },
+        //         new List<Enemy> { },
+        //         new List<Enemy> { },
+        //         new List<Enemy> { }
+        //     };
+        // }
+        // 
+        // int index = Random.Range(0, combats.Count);
+        // List<Enemy> combat = combats[index];
+        // return combat;
         return combat;
     }
 }

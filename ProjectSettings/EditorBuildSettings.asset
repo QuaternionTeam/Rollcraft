@@ -17,6 +17,9 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/INterfaz mockup.unity
     guid: 0ac9c6848d33217f4994785daadac15b
+  - enabled: 1
+    path: Assets/Scenes/Combat.unity
+    guid: 3c741c634fbce5c8fa062c3f30a6525d
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: c819b55b337dc8b47b1334435ec0b53c, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
