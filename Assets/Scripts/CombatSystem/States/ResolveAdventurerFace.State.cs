@@ -4,7 +4,7 @@ internal class ResolveAdventurerFaceState : CombatSystemState
     { 
         face.ApplyEffect();
 
-        if(context.enemies.Count == 0)
+        if(CombatSystem.enemies.Count == 0)
         {
             //TODO: WIN!
         }

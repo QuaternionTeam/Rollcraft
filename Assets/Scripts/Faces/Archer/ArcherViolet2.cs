@@ -8,19 +8,15 @@ internal class ArcherViolet2 : Face
 
     internal override TargetsCount AdventurersCount => TargetsCount.None;
 
-    internal override void OnLand()
+    [OnLand]
+    internal void ObtainReroll()
     {
-        base.OnLand();
-
-        //TODO: REROLL +1
+        GameData.instance.AddRerroll();
     }
 
-    internal override void ApplyEffect() 
-    {
-        base.ApplyEffect();
+    [Neutral]
+    internal void FirstAttack() => Attack(enemyTarget, 1);
 
-        enemies.First().RecieveAttack(1);
-
-        enemies.First().RecieveAttack(1);
-    }
+    [Neutral]
+    internal void SecondAttack() => Attack(enemyTarget, 1);
 }

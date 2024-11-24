@@ -1,5 +1,3 @@
-using System.Linq;
-
 internal class ArcherBlue2 : Face
 {
     public ArcherBlue2(Unit unit) : base(unit) { }
@@ -8,17 +6,9 @@ internal class ArcherBlue2 : Face
 
     internal override TargetsCount AdventurersCount => TargetsCount.None;
 
-    internal override void OnLand()
-    {
-        base.OnLand();
+    [OnLand]
+    internal void OnLandAttack() => Attack(enemyTarget, 1);
 
-        //TODO: RANDOMENEMY.RecieveAttack(1);
-    }
-
-    internal override void ApplyEffect() 
-    {
-        base.ApplyEffect();
-
-        enemies.First().RecieveAttack(1);
-    }
+    [Neutral]
+    internal void NeutralAttack() => Attack(enemyTarget, 1);
 }
