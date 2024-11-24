@@ -14,6 +14,11 @@ internal abstract class Unit : MonoBehaviour
     public Quickness quickness;
     internal bool isStunned = false;
 
+    void OnMouseDown()
+    {
+        CombatSystem.HasBeenClicked(this);
+    }
+
     internal void StartTurn()
     {
         shield = 0;

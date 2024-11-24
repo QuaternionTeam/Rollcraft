@@ -1,4 +1,4 @@
-internal class Adventurer : Unit
+internal abstract class Adventurer : Unit
 {
-    
+  
 }
