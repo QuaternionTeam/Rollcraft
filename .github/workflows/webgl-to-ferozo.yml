@@ -25,11 +25,13 @@ jobs:
           # Run Unity build command inside Docker container
           /opt/unity/Editor/Unity -batchmode -quit -projectPath $GITHUB_WORKSPACE -buildTarget WebGL -executeMethod BuildScript.PerformBuild -logFile
           
-      - name: Upload WebGL build to FTP
-        uses: SamKirkland/FTP-Deploy-Action@v4
-        with:
-          server: ${{ secrets.FEROZO_USER }}.ferozo.com
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./Builds/WebGL
-          remote-dir: /public_html/game-builds/${{ github.repository }}
+      - name: Instalar cliente FTP
+        run: sudo apt-get install -y lftp
+  
+      - name: Subir archivos via FTP
+        env:
+          FTP_SERVER: ${{ secrets.FEROZO_USER }}.ferozo.com
+          FTP_USERNAME: ${{ secrets.FEROZO_USER }}
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+          PROJECT_NAME: ${{ secrets.PROJECT_NAME }}
+        run: lftp -u "$FTP_USERNAME","$FTP_PASSWORD" -e "mirror -R --delete --verbose --parallel=20 --exclude-glob .git/ dist /public_html/game-builds/${PROJECT_NAME}; bye" ftp://$FTP_SERVER || true
