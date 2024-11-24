@@ -6,33 +6,30 @@ on:
       - published
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
-    
+    container:
+      image: unityci/editor:2023.1.0f1  # Use an appropriate Unity version
     steps:
-      # Step 1: Checkout the repository
-      - name: Checkout code
-        uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-      # Step 2: Set up Unity (using a Unity setup action)
-      - name: Setup Unity
-        uses: game-ci/unity-action@v2
-        with:
-          version: 2023.1.0f1  # TODO : Chequear la versión que necesitamos pa que corra piola
-          personal: true
-          
-      # Step 3: Build the WebGL project using Unity CLI
-      - name: Build WebGL Project
+      - name: Set up Unity Project
         run: |
-          unity -batchmode -nographics -quit -projectPath . -buildTarget WebGL -executeMethod BuildScript.PerformBuild -logFile ./build.log
-
-      # Step 4: Upload WebGL build to FTP
-      - name: Deploy to FTP
+          # Install dependencies for Unity build (if any)
+          sudo apt-get update
+          sudo apt-get install -y libunwind8 libssl1.0.0
+          
+      - name: Build Unity project
+        run: |
+          # Run Unity build command inside Docker container
+          /opt/unity/Editor/Unity -batchmode -quit -projectPath $GITHUB_WORKSPACE -buildTarget WebGL -executeMethod BuildScript.PerformBuild -logFile
+          
+      - name: Upload WebGL build to FTP
         uses: SamKirkland/FTP-Deploy-Action@v4
         with:
           server: ${{ secrets.FEROZO_USER }}.ferozo.com
-          username: ${{ secrets.FEROZO_USER }}
+          username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./Builds/WebGL  # The folder where Unity outputs the WebGL build
-          remote-dir: /public_html/game-builds/${{ secrets.PROJECT_NAME }}
-          clean: true
+          local-dir: ./Builds/WebGL
+          remote-dir: /public_html/game-builds/${{ github.repository }}
