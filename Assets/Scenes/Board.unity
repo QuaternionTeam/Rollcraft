@@ -469,6 +469,11 @@ MonoBehaviour:
   eliteCombatPrefab: {fileID: 4372182667693077879, guid: 0fe4d557567c8694b8b5e7953dc3292f, type: 3}
   rerollPrefab: {fileID: 8654950482056462272, guid: 01c7520cd3e32dd4f8c932f07b11fbea, type: 3}
   player: {fileID: 1003673932}
+  wolf: {fileID: 2549967982806759986, guid: ebd1099032c247b4da5f5621180b644e, type: 3}
+  alphaWolf: {fileID: 2549967982806759986, guid: ebd1099032c247b4da5f5621180b644e, type: 3}
+  goblin: {fileID: 2549967982806759986, guid: ebd1099032c247b4da5f5621180b644e, type: 3}
+  goblinLancer: {fileID: 2549967982806759986, guid: ebd1099032c247b4da5f5621180b644e, type: 3}
+  goblinLeader: {fileID: 2549967982806759986, guid: ebd1099032c247b4da5f5621180b644e, type: 3}
 --- !u!1 &699131724
 GameObject:
   m_ObjectHideFlags: 0

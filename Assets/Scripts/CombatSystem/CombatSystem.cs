@@ -14,14 +14,14 @@ internal class CombatSystem: MonoBehaviour
     internal void Start() 
     { 
         State = new EnemyRollState(this);
-        Instantiate(enemies[0], new Vector3(-1, 2, 0), Quaternion.identity);
-        Instantiate(enemies[0], new Vector3(0, 2.5f, 0), Quaternion.identity);
-        Instantiate(enemies[0], new Vector3(1, 2, 0), Quaternion.identity);
+        Instantiate(enemies[0], new Vector3(-5, 5, 0), Quaternion.identity);
+        Instantiate(enemies[0], new Vector3(0, 5.5f, 0), Quaternion.identity);
+        Instantiate(enemies[0], new Vector3(5, 5, 0), Quaternion.identity);
     }
 
     internal void Update() 
     {
-        State.Update();
+        // State.Update();
     }
 
     internal virtual void Reroll() 

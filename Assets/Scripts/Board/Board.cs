@@ -173,7 +173,7 @@ public class Board : MonoBehaviour
         playerGridLocationY = gridPosY;
     }
 
-    private static List<List<Enemy>> combats = null;
+    // private static List<List<Enemy>> combats = null;
     private static List<Enemy> combat = null;
     internal static List<Enemy> GetRandomList()
     {

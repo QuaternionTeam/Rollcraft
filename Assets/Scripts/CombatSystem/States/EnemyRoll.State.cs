@@ -4,9 +4,9 @@ internal class EnemyRollState : CombatSystemState
 {
     public EnemyRollState(CombatSystem context) : base(context)
     {
-        RollEnemyDices();
+        // RollEnemyDices();
 
-        context.ChangeState(new ChooseAdveturersState(context));
+        // context.ChangeState(new ChooseAdveturersState(context));
     }
 
     private void RollEnemyDices()

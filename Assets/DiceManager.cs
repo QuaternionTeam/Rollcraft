@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class DiceManager : MonoBehaviour
 {
-
+    static DiceManager instance; 
     public bool dragging;
     public bool target;
     public GameObject targetGameObject;
@@ -19,25 +19,29 @@ public class DiceManager : MonoBehaviour
 
     public GameObject diceObject;
     public SpriteRenderer[] diceFaces;
-    public bool canUseDice;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        instance = this;
+
         initialPosition = gameObject.transform.position;
         anim = GetComponent<Animator>();
+
     }
 
 
-    public void rollDice()
+    public void rollDice() //(int numDice, Face[] faces)
     {
-
+        // for (int i = 0; i < faces.Length; i++) {
+            // diceFaces[i].sprite = faces[i];
+        // }
 
         /*
         numDice = ; //  aplicar lógica del número de dado
                     //  aplicar lógica de cambiar las caras
         */
-        canUseDice= true;
+        // canUseDice= true;
         playAnim();
 
     }
@@ -47,7 +51,7 @@ public class DiceManager : MonoBehaviour
     void Update()
     {
 
-        if (canUseDice)
+        if (true)
         {
             if (Input.GetKeyDown("p"))
                 playAnim();
@@ -116,7 +120,7 @@ public class DiceManager : MonoBehaviour
 
         }
         diceObject.SetActive(false);
-        canUseDice = false;
+        // canUseDice = false;
         target= false;
         targetSelected= false;
     }

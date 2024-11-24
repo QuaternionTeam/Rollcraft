@@ -72,7 +72,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 800
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -322,7 +322,15 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      guerrero_0: 6066823060767111496
+      guerrero_1: -6461539517041965272
+      guerrero_2: -8879474701009258851
+      guerrero_3: -6855816853344310469
+      guerrero_4: -2731716026625988787
+      guerrero_5: -3689645511307308997
+      guerrero_6: -5551907425367352452
+      guerrero_7: 2652583916044864315
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

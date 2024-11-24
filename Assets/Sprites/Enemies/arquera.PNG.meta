@@ -66,7 +66,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 800
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -272,7 +272,13 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      arquera_0: 3116100204284456998
+      arquera_1: -4721816443565242805
+      arquera_2: 6819086537924483480
+      arquera_3: 869682001398476497
+      arquera_4: -1533863126165420477
+      arquera_5: -4942427381726782753
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
