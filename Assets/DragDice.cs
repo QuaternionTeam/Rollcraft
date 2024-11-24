@@ -14,17 +14,27 @@ public class DragDice : MonoBehaviour
 
     public bool targetSelected;
 
+    public int numDice;
+
+    public Animator anim;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         initialPosition = diceImage.rectTransform.position;
 
+
+
     }
 
     // Update is called once per frame
     void Update()
     {
+
+        if (Input.GetKeyDown("p"))
+            playAnim();
+
         if(dragging)
         {
             Vector3 mousePosition = new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x,Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
@@ -80,9 +90,15 @@ public class DragDice : MonoBehaviour
     public void applyDiceEffect()
     {
         print("aplicaste el efecto");
+        anim.gameObject.SetActive(false);
     }
 
-
+    public void playAnim()
+    {
+        anim.gameObject.SetActive(true);
+        anim.SetTrigger("reset");
+        anim.SetInteger("Dice",numDice);
+    }
 
 
 }
