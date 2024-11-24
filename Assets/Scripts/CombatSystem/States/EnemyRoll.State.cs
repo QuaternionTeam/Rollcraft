@@ -11,6 +11,8 @@ internal class EnemyRollState : CombatSystemState
 
     private void RollEnemyDices()
     {
-        context.enemyFaces = CombatSystem.enemies.Select(enemy => enemy.Dice.Roll()).ToList();
+        var pivot = CombatSystem.enemies.Select(enemy => enemy.Dice.Roll()).ToList();
+        context.enemyFaces = pivot.Select(tuple => tuple.Item1).ToList();
+        context.enemyFacesIndex = pivot.Select(tuple => tuple.Item2).ToList();
     }
 }

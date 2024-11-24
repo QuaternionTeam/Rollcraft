@@ -9,7 +9,7 @@ internal abstract class Unit : MonoBehaviour
     public int healthPoints;
     public int shield = 0;
     public abstract Dice Dice { get; }
-    internal List<Status> statuses;
+    internal List<Status> statuses = new();
 
     public Quickness quickness;
     internal bool isStunned = false;

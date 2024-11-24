@@ -9,7 +9,7 @@ internal class Dice
         this.faces = faces;
     }
 
-    internal Face Roll()
+    internal (Face, int) Roll()
     {
         int faceIndex = Random.Range(1,7);
         
@@ -17,7 +17,7 @@ internal class Dice
 
         face.OnLand();
 
-        return face;
+        return (face, faceIndex);
     }
 
     internal Face ChangeFace(Face newFace, int faceIndex)

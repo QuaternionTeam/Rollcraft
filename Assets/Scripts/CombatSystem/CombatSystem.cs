@@ -3,9 +3,10 @@ using UnityEngine;
 
 internal class CombatSystem: MonoBehaviour
 {
-    internal static List<Adventurer> adventurers;
-    internal static List<Enemy> enemies;
+    public static List<Adventurer> adventurers;
+    public static List<Enemy> enemies;
     internal List<Face> enemyFaces;
+    internal List<int> enemyFacesIndex;
     internal Face adventurerFace = null;
 
     static internal CombatSystemState State;

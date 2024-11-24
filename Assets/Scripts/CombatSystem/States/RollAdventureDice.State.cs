@@ -2,6 +2,7 @@ internal class RollAdventureDiceState : CombatSystemState
 {
     internal Adventurer adventurer;
     internal Face face;
+    internal int faceIndex;
     internal bool HasToSelectEnemies =>
         face != null && face.EnemiesCount == TargetsCount.One;
     internal bool HighlightAdventurers =>
@@ -10,7 +11,9 @@ internal class RollAdventureDiceState : CombatSystemState
     internal RollAdventureDiceState(CombatSystem context, Adventurer adventurer) : base(context)
     {
         this.adventurer = adventurer;
-        face = adventurer.Dice.Roll();
+        (Face, int )tuple = adventurer.Dice.Roll();
+        face = tuple.Item1;
+        faceIndex = tuple.Item2;
 
         //TODO TURN ON REROLL BUTTON
 
@@ -39,6 +42,8 @@ internal class RollAdventureDiceState : CombatSystemState
 
     internal override void Reroll()
     {
-        face = adventurer.Dice.Roll();
+        (Face, int )tuple = adventurer.Dice.Roll();
+        face = tuple.Item1;
+        faceIndex = tuple.Item2;
     }
 }
