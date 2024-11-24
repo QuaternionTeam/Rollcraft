@@ -8,9 +8,9 @@ internal class CombatSystem: MonoBehaviour
     internal List<Face> enemyFaces;
     internal Face adventurerFace = null;
 
-    internal CombatSystemState State;
+    static internal CombatSystemState State;
 
-    internal void Awake() 
+    internal void Start() 
     { 
         State = new EnemyRollState(this);
         Instantiate(enemies[0], new Vector3(-1, 2, 0), Quaternion.identity);
@@ -28,7 +28,7 @@ internal class CombatSystem: MonoBehaviour
         State.Reroll();
     }
 
-    internal void HasBeenClicked(Unit unit) 
+    static internal void HasBeenClicked(Unit unit) 
     { 
         State.HasBeenClicked(unit);
     }
