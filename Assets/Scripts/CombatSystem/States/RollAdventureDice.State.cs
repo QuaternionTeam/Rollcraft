@@ -10,7 +10,7 @@ internal class RollAdventureDiceState : CombatSystemState
     internal RollAdventureDiceState(CombatSystem context, Adventurer adventurer) : base(context)
     {
         this.adventurer = adventurer;
-        face = adventurer.dice.Roll();
+        face = adventurer.Dice.Roll();
 
         //TODO TURN ON REROLL BUTTON
 
@@ -39,6 +39,6 @@ internal class RollAdventureDiceState : CombatSystemState
 
     internal override void Reroll()
     {
-        face = adventurer.dice.Roll();
+        face = adventurer.Dice.Roll();
     }
 }

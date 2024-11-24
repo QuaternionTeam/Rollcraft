@@ -5,7 +5,7 @@ internal class ResolveEnemiesFacesState : CombatSystemState
         foreach(Face face in context.enemyFaces)
         {
             face.ApplyEffect();
-            if(context.adventurers.Count == 0)
+            if(CombatSystem.adventurers.Count == 0)
             {
                 //TODO: LOSE
             }
