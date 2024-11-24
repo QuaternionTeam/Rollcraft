@@ -1,8 +1,8 @@
 using System.Linq;
 
-internal class ArcherBlue1 : Face
+internal class Wolf1 : Face
 {
-    public ArcherBlue1(Unit unit) : base(unit) { }
+    public Wolf1(Unit unit) : base(unit) { }
 
     internal override TargetsCount EnemiesCount => TargetsCount.One;
 

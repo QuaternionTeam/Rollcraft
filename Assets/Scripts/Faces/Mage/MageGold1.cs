@@ -8,6 +8,8 @@ internal class MageGold1 : Face
 
     public MageGold1(Unit unit) : base(unit) { }
 
+    internal override string EffectString => "2 DMG (All) & Apply Shocked (All)	";
+
     [Neutral]
     internal void NeutralAttack() => AttackAllEnemies(2);
 
