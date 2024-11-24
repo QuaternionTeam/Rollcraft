@@ -19,6 +19,7 @@ jobs:
         uses: game-ci/unity-action@v2
         with:
           version: 2023.1.0f1  # TODO : Chequear la versión que necesitamos pa que corra piola
+          personal: true
           
       # Step 3: Build the WebGL project using Unity CLI
       - name: Build WebGL Project
