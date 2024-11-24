@@ -13,11 +13,23 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
+      - name: Prepare Unity installation
+        run: |
+          sudo mkdir -p /opt/Unity
+          sudo chmod -R 777 /opt/Unity
+
+          
       - name: Download Unity
         run: |
           wget -O Unity.tar.xz https://download.unity3d.com/download_unity/f336aca0cab5/LinuxEditorInstaller/Unity-6000.0.28f1.tar.xz
           tar -xf Unity.tar.xz -C /opt/
           sudo chmod -R +x /opt/Unity
+
+          
+          - name: Extract Unity Editor
+            run: |
+              sudo tar -xf Unity.tar.xz -C /opt/Unity
+
 
       - name: Build Unity project
         run: |
