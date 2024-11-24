@@ -3,7 +3,7 @@ using UnityEngine;
 
 internal class CombatSystem: MonoBehaviour
 {
-    internal readonly List<Adventurer> adventurers;
+    internal static List<Adventurer> adventurers;
     internal static List<Enemy> enemies;
     internal List<Face> enemyFaces;
     internal Face adventurerFace = null;

@@ -10,6 +10,6 @@ internal class WolfFace2 : Face
     internal override string EffectString => "1 DMG (All)";
 
     [Neutral]
-    internal void NeutraltAttack() => Attack(adventurerTarget, 2);
+    internal void NeutraltAttack() => AttackAllAdventurers(1);
 
 }

@@ -19,7 +19,7 @@ internal class TurnSystem
 
     internal void StartTurn()
     {
-        enemyFaces = enemies.Select(enemy => enemy.dice.Roll()).ToList();
+        enemyFaces = enemies.Select(enemy => enemy.Dice.Roll()).ToList();
 
         hasToSelectAdventurer = true;
     }
@@ -36,7 +36,7 @@ internal class TurnSystem
         {
             hasToSelectAdventurer = false;
 
-            adventurerFace = adventurer.dice.Roll();
+            adventurerFace = adventurer.Dice.Roll();
             
             hasToSelectTargets = true;
         }

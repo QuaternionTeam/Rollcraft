@@ -1,8 +1,13 @@
 using UnityEngine;
 
-internal abstract class Dice
+internal class Dice
 {
     internal Face[] faces;
+
+    internal Dice(Face[] faces)
+    {
+        this.faces = faces;
+    }
 
     internal Face Roll()
     {

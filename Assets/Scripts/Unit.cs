@@ -4,10 +4,11 @@ using UnityEngine;
 
 internal abstract class Unit : MonoBehaviour
 {
-    public int maxHealthPoints;
+    public abstract string Image { get; }
+    public abstract int MaxHealthPoints { get; }
     public int healthPoints;
     public int shield = 0;
-    public Dice dice;
+    public abstract Dice Dice { get; }
     internal List<Status> statuses;
 
     public Quickness quickness;
@@ -69,7 +70,7 @@ internal abstract class Unit : MonoBehaviour
 
     internal void RecieveHealing(int healing)
     {
-        this.healthPoints = Math.Max(healthPoints+healing, maxHealthPoints);
+        this.healthPoints = Math.Max(healthPoints+healing, MaxHealthPoints);
         //TODO: Await Healing Anim
     }
 

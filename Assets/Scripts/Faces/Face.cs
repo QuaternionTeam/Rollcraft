@@ -68,6 +68,12 @@ internal abstract class Face
             enemy.RecieveAttack(damage);
     }
 
+    internal void AttackAllAdventurers(int damage)
+    {
+        foreach(Adventurer adventurer in CombatSystem.adventurers)
+            adventurer.RecieveAttack(damage);
+    }
+
     internal void Heal(Unit unit, int heal)
     {
         unit.RecieveHealing(heal);

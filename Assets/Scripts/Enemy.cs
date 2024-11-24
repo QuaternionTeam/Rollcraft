@@ -1,4 +1,4 @@
-internal class Enemy : Unit
+internal abstract class Enemy : Unit
 {
     
 }
