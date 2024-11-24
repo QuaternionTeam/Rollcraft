@@ -223,6 +223,8 @@ MonoBehaviour:
   diceImage: {fileID: 103835578}
   diceClicked: 0
   targetSelected: 0
+  numDice: 0
+  anim: {fileID: 1823457055}
 --- !u!114 &103835578
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1860,7 +1862,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1762346181}
   - component: {fileID: 1762346184}
-  - component: {fileID: 1762346183}
   - component: {fileID: 1762346182}
   m_Layer: 0
   m_Name: Camera
@@ -1928,14 +1929,6 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
---- !u!81 &1762346183
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1762346180}
-  m_Enabled: 1
 --- !u!20 &1762346184
 Camera:
   m_ObjectHideFlags: 0
@@ -2090,7 +2083,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1823457054
 Transform:
   m_ObjectHideFlags: 0

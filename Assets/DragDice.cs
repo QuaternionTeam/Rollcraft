@@ -23,9 +23,6 @@ public class DragDice : MonoBehaviour
     void Start()
     {
         initialPosition = diceImage.rectTransform.position;
-
-
-
     }
 
     // Update is called once per frame
@@ -95,6 +92,8 @@ public class DragDice : MonoBehaviour
 
     public void playAnim()
     {
+
+        print("reproducir animacion");
         anim.gameObject.SetActive(true);
         anim.SetTrigger("reset");
         anim.SetInteger("Dice",numDice);
