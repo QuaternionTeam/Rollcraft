@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: eef783a1b4b24544d876fb4d528539c8
+guid: ba8c0220f5e40a447897bad530c9e417
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1291202924252101130
-    second: Background1_0
+      213: -5376490041964609975
+    second: RoundedRectange_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,40 +96,27 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Background1_0
+      name: RoundedRectange_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1104
-        height: 621
+        width: 80
+        height: 80
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 40, y: 40, z: 40, w: 40}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6f5020f08c9b41ee0800000000000000
-      internalID: -1291202924252101130
+      spriteID: 94e364eeaced265b0800000000000000
+      internalID: -5376490041964609975
       vertices: []
       indices: 
       edges: []
@@ -138,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: f92565bc3f3b4aa4daff0c49208b32d3
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Background1_0: -1291202924252101130
+      RoundedRectange_0: -5376490041964609975
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

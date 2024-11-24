@@ -1,6 +1,4 @@
 using System.Collections.Generic;
-using System.IO;
-using NUnit.Framework;
 using UnityEngine;
 
 public class Board : MonoBehaviour
@@ -23,7 +21,6 @@ public class Board : MonoBehaviour
 
     private Square InstantiateSquare(GameObject prefab, int gridPosX, int gridPosY)
     {
-        print(gridPosX + " " + gridPosY);
         Square newSquare = Instantiate(prefab, Vector3.zero, Quaternion.identity, transform).GetComponent<Square>();
         newSquare.transform.localPosition = new Vector3(gridPosX * squareSize, gridPosY * squareSize, 0);
         newSquare.Initialize(this, gridPosX, gridPosY);
