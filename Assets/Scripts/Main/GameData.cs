@@ -9,7 +9,7 @@ internal class Data
 
 internal class GameData : MonoBehaviour
 {
-    public static GameData instance => PersistentGameObject.Instance.GetOrAddComponent<GameData>();
+    internal static GameData Instance => PersistentGameObject.Instance.GetOrAddComponent<GameData>();
 
     private Data _playerData;
     internal Data playerData { get { if (_playerData == null) InitializePlayerData(); return _playerData; } }

@@ -3,10 +3,10 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-internal class BoardUI : MonoBehaviour
+internal class CombatUI : MonoBehaviour
 {
     [SerializeField] private TMP_Text rerrolls;
-    internal static BoardUI instance;
+    internal static CombatUI instance;
 
     private void Start()
     {
@@ -16,7 +16,7 @@ internal class BoardUI : MonoBehaviour
 
     public void OnMenuButton()
     {
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("Board");
     }
 
     internal void UpdateRerrolls()

@@ -55,7 +55,7 @@ public class Board : MonoBehaviour
 
     private void Initialize()
     {
-        if (!GameData.instance.generated)
+        if (!GameData.Instance.generated)
         {
             GenerateRandomBoard();
             for (int posX = 0; posX < realWidth; posX++)
@@ -63,12 +63,14 @@ public class Board : MonoBehaviour
                 for (int posY = 0; posY < realHeight; posY++)
                 {
                     if (grid[posX, posY])
-                        GameData.instance.grid[posX, posY] = grid[posX, posY].Type();
+                        GameData.Instance.grid[posX, posY] = grid[posX, posY].Type();
                     else
-                        GameData.instance.grid[posX, posY] = SquareType.Null;
+                        GameData.Instance.grid[posX, posY] = SquareType.Null;
                 }
             }
-            GameData.instance.generated = true;
+            GameData.Instance.generated = true;
+            player.transform.position = grid[(realWidth - 1) / 2, 0].transform.position;
+            player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, -1f) - Vector3.up * 3f;
         }
         else
         {
@@ -76,19 +78,18 @@ public class Board : MonoBehaviour
             {
                 for (int posY = 1; posY <= realHeight; posY++)
                 {
-                    if (GameData.instance.grid[posX - 1, posY - 1] == SquareType.Empty)
+                    if (GameData.Instance.grid[posX - 1, posY - 1] == SquareType.Empty)
                         InstantiateSquare(emptyPrefab, posX, posY);
-                    else if (GameData.instance.grid[posX - 1, posY - 1] == SquareType.Combat)
+                    else if (GameData.Instance.grid[posX - 1, posY - 1] == SquareType.Combat)
                         InstantiateSquare(combatPrefab, posX, posY);
-                    else if (GameData.instance.grid[posX - 1, posY - 1] == SquareType.Rerroll)
+                    else if (GameData.Instance.grid[posX - 1, posY - 1] == SquareType.Rerroll)
                         InstantiateSquare(rerollPrefab, posX, posY);
-                    else if (GameData.instance.grid[posX - 1, posY - 1] == SquareType.FinalBoss)
+                    else if (GameData.Instance.grid[posX - 1, posY - 1] == SquareType.FinalBoss)
                         InstantiateSquare(finalBossPrefab, posX, posY);
                 }
             }
             player.transform.position = grid[playerGridLocationX - 1, playerGridLocationY - 1].transform.position;
             player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, -1f);
-            player.Activate();
         }
     }
 

@@ -7,7 +7,7 @@ public class RerrollSquare : Square
         if (board.IsSelectable(gridPosX, gridPosY))
         {
             board.MovePlayer(gridPosX, gridPosY);
-            GameData.instance.AddRerroll();
+            GameData.Instance.AddRerroll();
             BoardUI.instance.UpdateRerrolls();
         }
     }
