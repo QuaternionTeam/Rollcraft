@@ -4,15 +4,18 @@ using UnityEngine;
 
 internal abstract class Unit : MonoBehaviour
 {
-    public abstract string Image { get; }
-    public abstract int MaxHealthPoints { get; }
-    public int healthPoints;
-    public int shield = 0;
-    public abstract Die Dice { get; }
+    //public abstract string Sprite { get; }
+    public int MaxHealthPoints;
+    internal int healthPoints;
+    internal int shield = 0;
+    public Die Die;
     internal List<Status> statuses = new();
-
-    public Quickness quickness;
     internal bool isStunned = false;
+
+    internal virtual void Awake()
+    {
+        healthPoints = MaxHealthPoints;
+    }
 
     internal void StartTurn()
     {
@@ -57,7 +60,7 @@ internal abstract class Unit : MonoBehaviour
         
         if (healthPoints == 0)
         {
-            Die();
+            ToDie();
             return;
         }
         
@@ -71,18 +74,20 @@ internal abstract class Unit : MonoBehaviour
 
     internal void RecieveHealing(int healing)
     {
-        this.healthPoints = Math.Max(healthPoints+healing, MaxHealthPoints);
+        healthPoints = Math.Max(healthPoints+healing, MaxHealthPoints);
         //TODO: Await Healing Anim
     }
 
     internal void ApplyStatus(Status status)
     {
-        this.statuses.Add(status);
+        statuses.Add(status);
     }
 
-    internal void Die()
+    internal void ToDie()
     {
+        CombatSystem.Died(this);
+
         //Die Anim
-        //Dead true?
+        //Disable object?
     }
 }

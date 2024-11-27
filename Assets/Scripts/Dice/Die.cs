@@ -11,6 +11,7 @@ internal class Die: MonoBehaviour
 
     internal virtual void Awake()
     {
+        Debug.Log("Die Awoken");
         transformComponent = transform;
 
         states = new() 
