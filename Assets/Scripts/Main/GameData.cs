@@ -1,4 +1,5 @@
 using System.IO;
+using Unity.VisualScripting;
 using UnityEngine;
 
 internal class Data
@@ -8,9 +9,7 @@ internal class Data
 
 internal class GameData : MonoBehaviour
 {
-    private static GameData _instance;
-    public static GameData instance { get { return _instance != null ? _instance : new GameObject().AddComponent<GameData>(); } set { _instance = value; } }
-
+    public static GameData instance => PersistentGameObject.Instance.GetOrAddComponent<GameData>();
 
     private Data _playerData;
     internal Data playerData { get { if (_playerData == null) InitializePlayerData(); return _playerData; } }
@@ -19,12 +18,6 @@ internal class GameData : MonoBehaviour
 
     internal bool generated = false;
     internal SquareType[,] grid = new SquareType[Board.realWidth, Board.realHeight];
-
-    void Awake()
-    {
-        instance = this;
-        DontDestroyOnLoad(this);
-    }
 
     void InitializePlayerData()
     {

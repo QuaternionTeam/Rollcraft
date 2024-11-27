@@ -8,7 +8,7 @@ public class RerrollSquare : Square
         {
             board.MovePlayer(gridPosX, gridPosY);
             GameData.instance.AddRerroll();
-            BoardMenu.instance.UpdateRerrolls();
+            BoardUI.instance.UpdateRerrolls();
         }
     }
 

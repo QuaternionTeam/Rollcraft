@@ -1,28 +1,25 @@
 fileFormatVersion: 2
-guid: 4313584bb051d414ba1fc95fe46f090e
+guid: 0f18a350b89689745bce4729fdc71ef6
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 302803095694985631
-    second: goblin con lanza_0
+      213: -7433781502226558110
+    second: "mago con cosm\xE9tico_0"
   - first:
-      213: 6431199500595501667
-    second: goblin con lanza_1
+      213: -7053266239457533710
+    second: "mago con cosm\xE9tico_1"
   - first:
-      213: 2989676525528655197
-    second: goblin con lanza_2
+      213: 5654999649964280297
+    second: "mago con cosm\xE9tico_2"
   - first:
-      213: 1221195277715758334
-    second: goblin con lanza_3
+      213: 8541135674165039829
+    second: "mago con cosm\xE9tico_3"
   - first:
-      213: -3548632077338919043
-    second: goblin con lanza_4
+      213: 751150952914866556
+    second: "mago con cosm\xE9tico_4"
   - first:
-      213: 3750882810394216866
-    second: goblin con lanza_5
-  - first:
-      213: -5126415606640407418
-    second: goblin con lanza_6
+      213: 2620156416971279276
+    second: "mago con cosm\xE9tico_5"
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -131,13 +128,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: goblin con lanza_0
+      name: "mago con cosm\xE9tico_0"
       rect:
         serializedVersion: 2
-        x: 2007
-        y: 2703
-        width: 29
-        height: 9
+        x: 1409
+        y: 1649
+        width: 90
+        height: 89
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -146,20 +143,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f99c9cbafc5c33400800000000000000
-      internalID: 302803095694985631
+      spriteID: 2639aed0c17e5d890800000000000000
+      internalID: -7433781502226558110
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: goblin con lanza_1
+      name: "mago con cosm\xE9tico_1"
       rect:
         serializedVersion: 2
-        x: 1310
-        y: 421
-        width: 1318
-        height: 2235
+        x: 1441
+        y: 318
+        width: 1425
+        height: 2428
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -168,40 +165,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 36a1aa03fd5304950800000000000000
-      internalID: 6431199500595501667
+      spriteID: 2f0e0ea99b3cd1e90800000000000000
+      internalID: -7053266239457533710
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: goblin con lanza_2
+      name: "mago con cosm\xE9tico_2"
       rect:
         serializedVersion: 2
-        x: 1769
-        y: 300
-        width: 124
-        height: 84
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d55a571c5f67d7920800000000000000
-      internalID: 2989676525528655197
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: goblin con lanza_3
-      rect:
-        serializedVersion: 2
-        x: 2066
-        y: 354
+        x: 2081
+        y: 255
         width: 127
         height: 52
       alignment: 0
@@ -212,18 +187,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: efcd1a982ae82f010800000000000000
-      internalID: 1221195277715758334
+      spriteID: 9e9441d58389a7e40800000000000000
+      internalID: 5654999649964280297
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: goblin con lanza_4
+      name: "mago con cosm\xE9tico_3"
       rect:
         serializedVersion: 2
-        x: 2387
-        y: 365
+        x: 2402
+        y: 266
         width: 8
         height: 7
       alignment: 0
@@ -234,18 +209,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d7f38a75de9b0cec0800000000000000
-      internalID: -3548632077338919043
+      spriteID: 5d2160d84a5388670800000000000000
+      internalID: 8541135674165039829
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: goblin con lanza_5
+      name: "mago con cosm\xE9tico_4"
       rect:
         serializedVersion: 2
-        x: 1541
-        y: 325
+        x: 1556
+        y: 226
         width: 62
         height: 26
       alignment: 0
@@ -256,18 +231,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2a98aa30b00dd0430800000000000000
-      internalID: 3750882810394216866
+      spriteID: c71df29dfcf9c6a00800000000000000
+      internalID: 751150952914866556
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: goblin con lanza_6
+      name: "mago con cosm\xE9tico_5"
       rect:
         serializedVersion: 2
-        x: 1651
-        y: 301
+        x: 1666
+        y: 202
         width: 14
         height: 8
       alignment: 0
@@ -278,8 +253,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 68c0e2baa205bd8b0800000000000000
-      internalID: -5126415606640407418
+      spriteID: cab8889016aac5420800000000000000
+      internalID: 2620156416971279276
       vertices: []
       indices: 
       edges: []
@@ -297,7 +272,13 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      "mago con cosm\xE9tico_0": -7433781502226558110
+      "mago con cosm\xE9tico_1": -7053266239457533710
+      "mago con cosm\xE9tico_2": 5654999649964280297
+      "mago con cosm\xE9tico_3": 8541135674165039829
+      "mago con cosm\xE9tico_4": 751150952914866556
+      "mago con cosm\xE9tico_5": 2620156416971279276
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

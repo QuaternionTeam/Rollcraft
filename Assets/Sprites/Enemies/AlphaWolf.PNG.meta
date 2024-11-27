@@ -1,13 +1,19 @@
 fileFormatVersion: 2
-guid: 9435f7a790d46b04d9789cf65170a305
+guid: 97afd74b627893a4a8460baf2505fde8
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8557036282155610054
-    second: goblin jefe_0
+      213: 6038245261965361917
+    second: Lobo malo_0
   - first:
-      213: -2243257218706733877
-    second: goblin jefe_1
+      213: 8400543009834739643
+    second: Lobo malo_1
+  - first:
+      213: 6745962112372993356
+    second: Lobo malo_2
+  - first:
+      213: 1962079957234336267
+    second: Lobo malo_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -116,13 +122,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: goblin jefe_0
+      name: Lobo malo_0
       rect:
         serializedVersion: 2
-        x: 1247
-        y: 179
-        width: 1523
-        height: 2744
+        x: 829
+        y: 104
+        width: 2047
+        height: 2738
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,20 +137,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6cfa3085923b0c670800000000000000
-      internalID: 8557036282155610054
+      spriteID: df28122e2182cc350800000000000000
+      internalID: 6038245261965361917
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: goblin jefe_1
+      name: Lobo malo_1
       rect:
         serializedVersion: 2
-        x: 2800
-        y: 413
-        width: 17
-        height: 18
+        x: 3747
+        y: 727
+        width: 32
+        height: 22
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,8 +159,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: bc48723e1795ed0e0800000000000000
-      internalID: -2243257218706733877
+      spriteID: bb727950c59b49470800000000000000
+      internalID: 8400543009834739643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lobo malo_2
+      rect:
+        serializedVersion: 2
+        x: 2236
+        y: 103
+        width: 14
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c4d6c30bcc87e9d50800000000000000
+      internalID: 6745962112372993356
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lobo malo_3
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 69
+        width: 51
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b02cdd75355ba3b10800000000000000
+      internalID: 1962079957234336267
       vertices: []
       indices: 
       edges: []
@@ -172,7 +222,11 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Lobo malo_0: 6038245261965361917
+      Lobo malo_1: 8400543009834739643
+      Lobo malo_2: 6745962112372993356
+      Lobo malo_3: 1962079957234336267
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

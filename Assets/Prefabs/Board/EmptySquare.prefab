@@ -12,22 +12,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: EmptySquare
       objectReference: {fileID: 0}
-    - target: {fileID: 5348596017469535068, guid: 70664e0caa6211b42b331a48d68935a7, type: 3}
-      propertyPath: m_Color.a
-      value: 0.23529412
-      objectReference: {fileID: 0}
-    - target: {fileID: 5348596017469535068, guid: 70664e0caa6211b42b331a48d68935a7, type: 3}
-      propertyPath: m_Color.b
-      value: 0.14831519
-      objectReference: {fileID: 0}
-    - target: {fileID: 5348596017469535068, guid: 70664e0caa6211b42b331a48d68935a7, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5348596017469535068, guid: 70664e0caa6211b42b331a48d68935a7, type: 3}
-      propertyPath: m_Color.r
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5409416742575704649, guid: 70664e0caa6211b42b331a48d68935a7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
