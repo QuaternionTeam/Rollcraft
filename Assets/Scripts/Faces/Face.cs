@@ -1,133 +1,22 @@
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-
-internal abstract class Face
+internal class Face
 {
-    internal List<MethodInfo> FastMethods { get; private set; } = new List<MethodInfo>();
-    internal List<MethodInfo> SlowMethods { get; private set; } = new List<MethodInfo>();
-    internal List<MethodInfo> MidMethods { get; private set; } = new List<MethodInfo>();
-    internal List<MethodInfo> NeutralMethods { get; private set; } = new List<MethodInfo>();
-    internal List<MethodInfo> OnLandMethods { get; private set; } = new List<MethodInfo>();
+    //internal int diceIndex;
 
-    internal abstract string EffectString { get; }
+    internal SkillStrategy OnLandSkill = new NothingStrategy();
+    internal SkillStrategy NeutralSkill = new NothingStrategy();
+    internal SkillStrategy FastSkill = new NothingStrategy();
+    internal SkillStrategy SlowSkill = new NothingStrategy();
 
-    protected readonly Unit unit;
-    internal Enemy enemyTarget = null;
-    internal Adventurer adventurerTarget = null;
-
-
-    internal List<Enemy> enemies = null;
-    internal List<Adventurer> adventurers = null;
-    internal abstract TargetsCount EnemiesCount { get; }
-    internal abstract TargetsCount AdventurersCount { get; }
-
-    internal Face(Unit unit)
+    internal void OnLand()
     {
-        this.unit = unit;
-        AddCustomlyDecoratedMethods();
+        OnLandSkill.Resolve();
     }
 
- 
-    internal void OnLand() 
-    { 
-        foreach(MethodInfo method in OnLandMethods)
-            method.Invoke(this, null);
-    }
-
-    internal void ApplyEffect() 
-    { 
-        foreach(MethodInfo method in NeutralMethods)
-            method.Invoke(this, null);
+    internal void Resolve()
+    {
+        FastSkill.Resolve();
+        SlowSkill.Resolve();
         
-        if(unit.quickness == Quickness.Fast)
-            foreach(MethodInfo method in FastMethods)
-                method.Invoke(this, null);
-
-        if(unit.quickness == Quickness.Slow)
-            foreach(MethodInfo method in SlowMethods)
-                method.Invoke(this, null);       
+        NeutralSkill.Resolve();
     }
-
-    internal bool HasAllTargetsSelected()
-    {
-        bool AdventurerSelected = adventurerTarget != null || AdventurersCount != TargetsCount.One;
-        bool EnemySelected = enemyTarget != null || EnemiesCount != TargetsCount.One;
-
-        return AdventurerSelected && EnemySelected;
-    }
-
-    internal void Attack(Unit unit, int damage)
-    {
-        unit.RecieveAttack(damage);
-    }
-
-    internal void AttackAllEnemies(int damage)
-    {
-        foreach(Enemy enemy in CombatSystem.enemies)
-            enemy.RecieveAttack(damage);
-    }
-
-    internal void AttackAllAdventurers(int damage)
-    {
-        foreach(Adventurer adventurer in CombatSystem.adventurers)
-            adventurer.RecieveAttack(damage);
-    }
-
-    internal void Heal(Unit unit, int heal)
-    {
-        unit.RecieveHealing(heal);
-    }
-
-    internal void Protect(Unit unit, int shield)
-    {
-        unit.RecieveShield(shield);
-    }
-
-    internal void Apply(Unit unit, Status status)
-    {
-        unit.ApplyStatus(status);
-    }
-
-    internal void ApplyAllEnemies(Status status)
-    {
-        foreach(Enemy enemy in CombatSystem.enemies)
-            enemy.ApplyStatus(status);
-    }
-
-       private void AddCustomlyDecoratedMethods()
-    {
-        var methods = this.GetType()
-                          .GetMethods(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)
-                          .Where(m => m.GetCustomAttribute<FastAttribute>() != null)
-                          .ToList();
-        FastMethods.AddRange(methods);
-
-
-        methods = this.GetType()
-                          .GetMethods(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)
-                          .Where(m => m.GetCustomAttribute<SlowAttribute>() != null)
-                          .ToList();
-        SlowMethods.AddRange(methods);
-
-
-        methods = this.GetType()
-                          .GetMethods(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)
-                          .Where(m => m.GetCustomAttribute<NeutralAttribute>() != null)
-                          .ToList();
-        NeutralMethods.AddRange(methods);
-
-        methods = this.GetType()
-                          .GetMethods(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)
-                          .Where(m => m.GetCustomAttribute<OnLandAttribute>() != null)
-                          .ToList();
-        OnLandMethods.AddRange(methods);
-
-        methods = this.GetType()
-                          .GetMethods(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)
-                          .Where(m => m.GetCustomAttribute<MidAttribute>() != null)
-                          .ToList();
-        OnLandMethods.AddRange(methods);
-    } 
-
 }

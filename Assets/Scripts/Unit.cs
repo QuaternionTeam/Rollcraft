@@ -8,16 +8,11 @@ internal abstract class Unit : MonoBehaviour
     public abstract int MaxHealthPoints { get; }
     public int healthPoints;
     public int shield = 0;
-    public abstract Dice Dice { get; }
+    public abstract Die Dice { get; }
     internal List<Status> statuses = new();
 
     public Quickness quickness;
     internal bool isStunned = false;
-
-    void OnMouseDown()
-    {
-        CombatSystem.HasBeenClicked(this);
-    }
 
     internal void StartTurn()
     {
@@ -26,7 +21,7 @@ internal abstract class Unit : MonoBehaviour
     
     internal void RecieveAttack(int damage)
     {
-        int damageAfterShield = DamageAfterShield(damage);
+        int damageAfterShield = CalculateDamageAfterShield(damage);
 
         if (damageAfterShield == 0)
             return;
@@ -37,7 +32,7 @@ internal abstract class Unit : MonoBehaviour
             status.OnRecieveAttack(this, damageAfterShield);
     }
 
-    private int DamageAfterShield(int damage)
+    private int CalculateDamageAfterShield(int damage)
     {
         int damageAfterShield;
 
@@ -59,6 +54,7 @@ internal abstract class Unit : MonoBehaviour
     {
         healthPoints = Math.Max(healthPoints-damage,0);
         //TODO: Await Dagame Anim
+        
         if (healthPoints == 0)
         {
             Die();

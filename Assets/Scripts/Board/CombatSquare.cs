@@ -10,7 +10,7 @@ public class CombatSquare : Square
         if (board.IsSelectable(gridPosX, gridPosY))
         {
             board.MovePlayer(gridPosX, gridPosY);
-            CombatSystem.enemies = Board.GetRandomList();
+            //CombatSystem.enemies = Board.GetRandomList();
             SceneManager.LoadScene("Combat");
         }
     }

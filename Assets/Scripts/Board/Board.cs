@@ -22,11 +22,11 @@ public class Board : MonoBehaviour
     private Square[,] grid = new Square[realWidth, realHeight];
     private static int playerGridLocationX = -1, playerGridLocationY = -1;
 
-    [SerializeField] internal Enemy wolf, alphaWolf, goblin, goblinLancer, goblinLeader;
+    //[SerializeField] internal Enemy wolf, alphaWolf, goblin, goblinLancer, goblinLeader;
 
     void Start()
     {
-        combat = new List<Enemy> { wolf, wolf, wolf };
+        //combat = new List<Enemy> { wolf, wolf, wolf };
         transform.position = new Vector3(-realWidth * squareSize / 2, -realHeight * squareSize / 2, 0f);
         Initialize();
     }
@@ -174,8 +174,8 @@ public class Board : MonoBehaviour
     }
 
     // private static List<List<Enemy>> combats = null;
-    private static List<Enemy> combat = null;
-    internal static List<Enemy> GetRandomList()
+    //private static List<Enemy> combat = null;
+    /*internal static List<Enemy> GetRandomList()
     {
         // if (combats == null)
         // {
@@ -192,5 +192,5 @@ public class Board : MonoBehaviour
         // List<Enemy> combat = combats[index];
         // return combat;
         return combat;
-    }
+    }*/
 }

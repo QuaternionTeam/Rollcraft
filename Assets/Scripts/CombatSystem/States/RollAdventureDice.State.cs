@@ -1,5 +1,7 @@
 internal class RollAdventureDiceState : CombatSystemState
 {
+    public RollAdventureDiceState(CombatSystem context) : base(context) { }
+    /*
     internal Adventurer adventurer;
     internal Face face;
     internal int faceIndex;
@@ -45,5 +47,6 @@ internal class RollAdventureDiceState : CombatSystemState
         (Face, int )tuple = adventurer.Dice.Roll();
         face = tuple.Item1;
         faceIndex = tuple.Item2;
-    }
+    }*/
+
 }
