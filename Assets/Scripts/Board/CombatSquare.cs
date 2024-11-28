@@ -1,3 +1,4 @@
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class CombatSquare : Square
@@ -8,8 +9,9 @@ public class CombatSquare : Square
     {
         if (board.IsSelectable(gridPosX, gridPosY))
         {
-            board.MovePlayer(gridPosX, gridPosY);
+            //board.MovePlayer(gridPosX, gridPosY);
             AudioManager.Instance.PlayClickSound();
+            CombatInitializationData.gridPosition = new Vector2Int(gridPosX, gridPosY);
             //CombatSystem.enemies = Board.GetRandomList();
             SceneManager.LoadScene("Combat");
         }

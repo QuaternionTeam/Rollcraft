@@ -1,3 +1,6 @@
+using UnityEngine.SceneManagement;
+using UnityEngine;
+
 public class RerrollSquare : Square
 {
     internal override bool Walkable() => false;
@@ -6,9 +9,11 @@ public class RerrollSquare : Square
     {
         if (board.IsSelectable(gridPosX, gridPosY))
         {
-            board.MovePlayer(gridPosX, gridPosY);
-            GameData.Instance.AddRerroll();
-            BoardUI.instance.UpdateRerrolls();
+            //board.MovePlayer(gridPosX, gridPosY);
+            AudioManager.Instance.PlayClickSound();
+            CombatInitializationData.gridPosition = new Vector2Int(gridPosX, gridPosY);
+            //CombatSystem.enemies = Board.GetRandomList();
+            SceneManager.LoadScene("Combat");
         }
     }
 

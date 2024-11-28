@@ -88,9 +88,25 @@ public class Board : MonoBehaviour
                         InstantiateSquare(finalBossPrefab, posX, posY);
                 }
             }
-            player.transform.position = grid[playerGridLocationX - 1, playerGridLocationY - 1].transform.position;
-            player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, -1f);
+            if (playerGridLocationX == -1)
+            {
+                player.transform.position = grid[(realWidth - 1) / 2, 0].transform.position;
+                player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, -1f) - Vector3.up * 3f;
+            } else
+            {
+                player.transform.position = grid[playerGridLocationX - 1, playerGridLocationY - 1].transform.position;
+                player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, -1f);
+            }
         }
+
+        // Activate glow
+        foreach (Square square in grid)
+            if (square != null && IsSelectable(square.gridPosX, square.gridPosY))
+                square.ActivateGlow();
+
+        // Move player after victory
+        if (CombatInitializationData.victory)
+            MovePlayer(CombatInitializationData.gridPosition);
     }
 
     private void GenerateRandomBoard()
@@ -132,6 +148,8 @@ public class Board : MonoBehaviour
     {
         if (playerGridLocationX == -1)
             return gridPosY == 1;
+        else if (gridPosX == playerGridLocationX  && gridPosY == playerGridLocationY)
+            return false;
         return PathFind(new Vector2Int(playerGridLocationX, playerGridLocationY), new Vector2Int(gridPosX, gridPosY), new List<Vector2Int>());
     }
 
@@ -165,13 +183,13 @@ public class Board : MonoBehaviour
         return false;
     }
 
-    internal void MovePlayer(int gridPosX, int gridPosY)
+    internal void MovePlayer(Vector2Int gridPosition)
     {
         player.Activate();
-        player.transform.position = grid[gridPosX - 1, gridPosY - 1].transform.position;
+        player.transform.position = grid[gridPosition.x - 1, gridPosition.y - 1].transform.position;
         player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, -1f);
-        playerGridLocationX = gridPosX;
-        playerGridLocationY = gridPosY;
+        playerGridLocationX = gridPosition.x;
+        playerGridLocationY = gridPosition.y;
     }
 
     // private static List<List<Enemy>> combats = null;

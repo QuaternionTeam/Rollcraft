@@ -1,4 +1,3 @@
-using System.Security.Cryptography;
 using UnityEngine;
 
 public abstract class Square : MonoBehaviour
@@ -16,4 +15,11 @@ public abstract class Square : MonoBehaviour
     internal abstract bool Walkable();
     internal abstract void OnMouseDown();
     internal abstract SquareType Type();
+
+    internal void ActivateGlow()
+    {
+        Animation animation = GetComponentInChildren<Animation>();
+        if (animation)
+            animation.Play();
+    }
 }

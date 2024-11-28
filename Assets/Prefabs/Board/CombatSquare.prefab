@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8077065860248409603}
   - component: {fileID: 3026532080032882085}
+  - component: {fileID: 8094916158414338711}
   m_Layer: 0
-  m_Name: Square (1)
+  m_Name: Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,17 +77,34 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -4572586573656043255, guid: cc8c1b2357dff0e4cb3e9a0f1a96bdaf, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cc8c1b2357dff0e4cb3e9a0f1a96bdaf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 9.7, y: 9.7}
+  m_Size: {x: 1.1377778, y: 1.1377778}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!111 &8094916158414338711
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8284786406106912849}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Animation: {fileID: 7400000, guid: f2191b2ec34e2c9449003ed5b4b279b7, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: f2191b2ec34e2c9449003ed5b4b279b7, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_UpdateMode: 0
+  m_CullingType: 0
 --- !u!1001 &6496253837681513715
 PrefabInstance:
   m_ObjectHideFlags: 0

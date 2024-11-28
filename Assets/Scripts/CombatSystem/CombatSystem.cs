@@ -3,6 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+internal static class CombatInitializationData
+{
+    internal static List<Enemy> enemyPrefabs;
+    internal static Vector2Int gridPosition;
+    internal static bool victory;
+}
+
 internal class CombatSystem: MonoBehaviour
 {
     public Enemy wolf;
@@ -12,7 +19,6 @@ internal class CombatSystem: MonoBehaviour
 
     public static List<Adventurer> adventurers;
     public static List<Enemy> enemies;
-    public static List<Enemy> enemyPrefabs;
     internal List<Face> enemyFaces;
     internal List<int> enemyFacesIndex;
     internal Face adventurerFace = null;
