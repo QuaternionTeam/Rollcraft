@@ -11,9 +11,8 @@ GameObject:
   - component: {fileID: 1163969043889424756}
   - component: {fileID: 486268126827718426}
   - component: {fileID: 5512976689202163904}
-  - component: {fileID: 5971233468182758877}
-  - component: {fileID: -8041822319906075939}
   - component: {fileID: -3982082836287308224}
+  - component: {fileID: -7345926216134303857}
   m_Layer: 10
   m_Name: Warrior
   m_TagString: Untagged
@@ -104,34 +103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHealthPoints: 8
-  Die: {fileID: 0}
---- !u!114 &5971233468182758877
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7793643410965362773}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75ee2da90eb6a3a64beaec56a8873d29, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &-8041822319906075939
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7793643410965362773}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af70da46d8500416689d46133818d013, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  layer: 7
-  scaleMultiplier: 1.2
-  duplicateColor: {r: 0, g: 1, b: 0, a: 1}
+  Die: {fileID: 3380260872488236191, guid: b40494014acdb91b3a7167d61fdc3f83, type: 3}
 --- !u!61 &-3982082836287308224
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -178,3 +150,20 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.99375, y: 3.0350003}
   m_EdgeRadius: 0
+--- !u!111 &-7345926216134303857
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7793643410965362773}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Animation: {fileID: 7400000, guid: beb047278b8149e47824bb6c4e5af737, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: beb047278b8149e47824bb6c4e5af737, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_UpdateMode: 0
+  m_CullingType: 0

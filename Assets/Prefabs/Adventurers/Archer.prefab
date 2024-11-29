@@ -11,9 +11,8 @@ GameObject:
   - component: {fileID: 5789922603881688364}
   - component: {fileID: 4507127127060096910}
   - component: {fileID: -4049689960806170232}
-  - component: {fileID: -2207396932782327902}
-  - component: {fileID: 4233468040390525475}
   - component: {fileID: 4593977881072309806}
+  - component: {fileID: 5821546191466740885}
   m_Layer: 10
   m_Name: Archer
   m_TagString: Untagged
@@ -105,33 +104,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHealthPoints: 7
   Die: {fileID: 3380260872488236191, guid: b40494014acdb91b3a7167d61fdc3f83, type: 3}
---- !u!114 &-2207396932782327902
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 226757996040029855}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75ee2da90eb6a3a64beaec56a8873d29, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &4233468040390525475
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 226757996040029855}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af70da46d8500416689d46133818d013, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  layer: 7
-  scaleMultiplier: 1.2
-  duplicateColor: {r: 0, g: 1, b: 0, a: 1}
 --- !u!61 &4593977881072309806
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -178,3 +150,20 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 2.305, y: 2.8825}
   m_EdgeRadius: 0
+--- !u!111 &5821546191466740885
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 226757996040029855}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Animation: {fileID: 7400000, guid: beb047278b8149e47824bb6c4e5af737, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: beb047278b8149e47824bb6c4e5af737, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_UpdateMode: 0
+  m_CullingType: 0

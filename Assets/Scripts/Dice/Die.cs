@@ -4,14 +4,14 @@ using UnityEngine;
 internal class Die: MonoBehaviour
 {
     internal Face[] faces;
+    internal Face faceUp;
     protected Dictionary<DieStates, DieState> states;
     protected DieState state;
-
     internal Transform transformComponent;
 
     internal virtual void Awake()
     {
-        Debug.Log("Die Awoken");
+        //Debug.Log("Die Awoken");
         transformComponent = transform;
 
         states = new() 
@@ -32,6 +32,11 @@ internal class Die: MonoBehaviour
     internal void Roll()
     {
         state.Roll();
+    }
+
+    internal void Resolve()
+    {
+        faceUp.Resolve();
     }
 
     internal void ChangeState(DieStates newState)

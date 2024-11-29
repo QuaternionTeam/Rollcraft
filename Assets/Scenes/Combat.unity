@@ -479,53 +479,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 777379415}
   m_CullTransparentMesh: 1
---- !u!1 &784547853
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 784547855}
-  - component: {fileID: 784547854}
-  m_Layer: 0
-  m_Name: Selector
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &784547854
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 784547853}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0bc07b0137f744885bf6744653621b3e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  selectableLayer:
-    serializedVersion: 2
-    m_Bits: 0
---- !u!4 &784547855
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 784547853}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.761226, y: -1.3026826, z: 0.029149828}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &829933174
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -993,7 +946,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -2.5}
+  m_AnchoredPosition: {x: 0, y: -2.5000153}
   m_SizeDelta: {x: 0, y: -5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1649050858
@@ -1293,10 +1246,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8160e1f77acee8eb97cce868c3291d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wolf: {fileID: 3126158000728455851, guid: ab908b8cf36cd5465a7e7914d0f47633, type: 3}
+  wolf: {fileID: 1509666456836066429, guid: 615d2030b8ca751cbab964f69b1a4d65, type: 3}
   archerPrefab: {fileID: -4049689960806170232, guid: 7d0227cda9d0191bd83b55da70fe0bf8, type: 3}
   warriorPrefab: {fileID: 5512976689202163904, guid: 427f94d6e811218bebc2d6b2f2f19e68, type: 3}
   magePrefab: {fileID: 5805027616492970808, guid: cccc63258f767c7bfb2522782208ef28, type: 3}
+  adventurersLayer:
+    serializedVersion: 2
+    m_Bits: 1024
+  enemiesLayer:
+    serializedVersion: 2
+    m_Bits: 2048
 --- !u!4 &2045164129
 Transform:
   m_ObjectHideFlags: 0
@@ -1554,4 +1513,3 @@ SceneRoots:
   - {fileID: 1381614283}
   - {fileID: 1216579381}
   - {fileID: 2045164129}
-  - {fileID: 784547855}

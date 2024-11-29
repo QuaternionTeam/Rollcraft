@@ -50,4 +50,12 @@ internal class GameData : MonoBehaviour
         _playerData.rerrols++;
         Save();
     }
+
+    internal void RemoveRerroll()
+    {
+        _playerData.rerrols--;
+        Save();
+    }
+    internal int RerrollsCount() => _playerData.rerrols;
+
 }

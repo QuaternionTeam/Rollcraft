@@ -7,6 +7,8 @@ internal abstract class CombatSystemState
         this.context = context;
     }
 
+    internal virtual void Enter() { }
+    internal virtual void Exit() { }
     internal virtual void Update() { }
     internal virtual void Reroll() { }
     internal virtual void Confirm() { }

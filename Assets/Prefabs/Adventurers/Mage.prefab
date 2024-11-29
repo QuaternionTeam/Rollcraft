@@ -11,9 +11,8 @@ GameObject:
   - component: {fileID: 1128738740662075306}
   - component: {fileID: 8627175886904740567}
   - component: {fileID: 5805027616492970808}
-  - component: {fileID: -1819380672353244948}
-  - component: {fileID: 4114333538038999981}
   - component: {fileID: 7960138476251879738}
+  - component: {fileID: -7097112317798906426}
   m_Layer: 10
   m_Name: Mage
   m_TagString: Untagged
@@ -105,33 +104,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHealthPoints: 6
   Die: {fileID: 3380260872488236191, guid: b40494014acdb91b3a7167d61fdc3f83, type: 3}
---- !u!114 &-1819380672353244948
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 481322641601701110}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75ee2da90eb6a3a64beaec56a8873d29, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &4114333538038999981
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 481322641601701110}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af70da46d8500416689d46133818d013, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  layer: 7
-  scaleMultiplier: 1.2
-  duplicateColor: {r: 0, g: 1, b: 0, a: 1}
 --- !u!61 &7960138476251879738
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -178,3 +150,20 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.7812501, y: 3.0350003}
   m_EdgeRadius: 0
+--- !u!111 &-7097112317798906426
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 481322641601701110}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Animation: {fileID: 7400000, guid: beb047278b8149e47824bb6c4e5af737, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: beb047278b8149e47824bb6c4e5af737, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_UpdateMode: 0
+  m_CullingType: 0

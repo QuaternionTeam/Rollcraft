@@ -1,14 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
-
-internal static class CombatInitializationData
-{
-    internal static List<Enemy> enemyPrefabs;
-    internal static Vector2Int gridPosition;
-    internal static bool victory;
-}
 
 internal class CombatSystem: MonoBehaviour
 {
@@ -17,37 +9,42 @@ internal class CombatSystem: MonoBehaviour
     public Adventurer warriorPrefab;
     public Adventurer magePrefab;
 
-    public static List<Adventurer> adventurers;
-    public static List<Enemy> enemies;
+    public LayerMask adventurersLayer;
+    public LayerMask enemiesLayer;
+
     internal List<Face> enemyFaces;
     internal List<int> enemyFacesIndex;
     internal Face adventurerFace = null;
 
-    static internal CombatSystemState State = null;
+    internal CombatSystemState State = null;
+    internal Dictionary<Combat, CombatSystemState> States;
 
-    internal void Start() 
-    { 
-        /*
-        enemies = new()
+    internal void Start()
+    {
+        CombatData.system = this;
+
+        States = new()
         {
-            Instantiate(enemyPrefabs[0], new Vector3(-5, 5, 0), Quaternion.identity),
-            Instantiate(enemyPrefabs[1], new Vector3(0, 5.5f, 0), Quaternion.identity),
-            Instantiate(enemyPrefabs[2], new Vector3(5, 5, 0), Quaternion.identity),
+            { Combat.EnemiesRoll, new EnemiesRollState(this) },
+            { Combat.ChooseAdventurer, new ChooseAdveturersState(this) },
+            
+            { Combat.AdventurerRoll, new RollAdventureDieState(this) },
+            { Combat.TargetSelection, new TargetSeleccionState(this) },
+            { Combat.ResolveAdventurerDie, new ResolveAdventurerDieState(this) },
+            { Combat.ResolveEnemiesDice, new ResolveEnemiesDiceState(this) },
+
+            //{ Combat.Win, new EnemiesRollState(this) },
+            //{ Combat.Lose, new EnemiesRollState(this) },
         };
-        */
-        
-        enemies = new()
+
+        CombatData.enemies = new()
         {
             Instantiate(wolf, new Vector3(-5, 5, 0), Quaternion.identity),
             Instantiate(wolf, new Vector3(0, 5.5f, 0), Quaternion.identity),
             Instantiate(wolf, new Vector3(5, 5, 0), Quaternion.identity),
         };
-
-        Instantiate(archerPrefab);
-        Instantiate(warriorPrefab);
-        Instantiate(magePrefab);
         
-        adventurers = new()
+        CombatData.adventurers = new()
         {
             Instantiate(archerPrefab),
             Instantiate(warriorPrefab),
@@ -61,33 +58,28 @@ internal class CombatSystem: MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
 
-        State = new EnemyRollState(this);
+        State = States[Combat.EnemiesRoll];
+        State.Enter();
     }
 
     internal void Update() 
     {
         if(State == null)
             return;
+        //Debug.Log("Estado: " + State);
         State.Update();
     }
 
-    internal static void Died(Unit unit) 
-    {
-        if(unit is Adventurer adventurer)
-            adventurers.Remove(adventurer);
-
-        if(unit is Enemy enemy)
-            enemies.Remove(enemy);
-    }
-
-    internal virtual void Reroll() 
+    internal void Reroll() 
     { 
         State.Reroll();
     }
 
-    internal void ChangeState(CombatSystemState newState)
+    internal void ChangeState(Combat newState)
     {
-        State = newState;
+        //Debug.Log("Cambie de estado de " + State + " a " + newState);
+        State.Exit();
+        State = States[newState];
+        State.Enter();
     }
-
 }

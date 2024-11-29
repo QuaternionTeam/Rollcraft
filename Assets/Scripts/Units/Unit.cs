@@ -6,15 +6,32 @@ internal abstract class Unit : MonoBehaviour
 {
     //public abstract string Sprite { get; }
     public int MaxHealthPoints;
+    private Animation Glow;
     internal int healthPoints;
     internal int shield = 0;
     public Die Die;
     internal List<Status> statuses = new();
     internal bool isStunned = false;
 
+    private SpriteRenderer spriteRenderer;
+    private Color originalColor;
+
     internal virtual void Awake()
     {
+        Glow = GetComponent<Animation>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        originalColor = spriteRenderer.color;
         healthPoints = MaxHealthPoints;
+    }
+
+    internal virtual void RollDie()
+    {
+        Die.Roll();
+    }
+
+    internal virtual void ResolveDie()
+    {
+        Die.Resolve();
     }
 
     internal void StartTurn()
@@ -85,9 +102,22 @@ internal abstract class Unit : MonoBehaviour
 
     internal void ToDie()
     {
-        CombatSystem.Died(this);
+        CombatData.UnitDied(this);
 
         //Die Anim
         //Disable object?
+    }
+
+    internal void TurnGlowOn()
+    {
+        Glow.Play();
+    }
+
+    internal void TurnGlowOff()
+    {
+        Glow.Stop();
+        Glow.Rewind();
+
+        spriteRenderer.color = originalColor;
     }
 }

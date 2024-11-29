@@ -17,13 +17,15 @@ internal class DieLandingState: DieState
 
         Face faceToLandOn = die.faces[faceIndex];
 
-        Debug.Log("Land on " + (faceIndex + 1));
+        //Debug.Log("Land on " + (faceIndex + 1));
         
         faceToLandOn.OnLand();
 
         Vector3 rotation = GetTargetRotationForFace(faceIndex + 1);
 
         cube.rotation = Quaternion.Euler(rotation);
+
+        die.faceUp = faceToLandOn;
 
         die.ChangeState(DieStates.Static);
     }

@@ -1,7 +1,7 @@
 internal class Face
 {
     //internal int diceIndex;
-
+    internal SelectionStrategy Target = SelectionStrategy.NoTarget;
     internal SkillStrategy OnLandSkill = new NothingStrategy();
     internal SkillStrategy NeutralSkill = new NothingStrategy();
     internal SkillStrategy FastSkill = new NothingStrategy();
