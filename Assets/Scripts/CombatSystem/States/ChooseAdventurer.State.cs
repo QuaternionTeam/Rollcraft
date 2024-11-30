@@ -2,12 +2,8 @@ using UnityEngine;
 
 internal class ChooseAdveturersState : CombatSystemState
 {
-    private readonly Camera mainCamera;
 
-    internal ChooseAdveturersState(CombatSystem context) : base(context) 
-    { 
-        mainCamera = Camera.main;
-    }
+    internal ChooseAdveturersState(CombatSystem context) : base(context) { }
 
     internal override void Enter()
     {
@@ -52,18 +48,8 @@ internal class ChooseAdveturersState : CombatSystemState
 
     private void HandleAdventurerSelection()
     {
-        if (!Input.GetMouseButtonDown(0))
-            return; 
-
-        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-
-        RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity, context.adventurersLayer);
-
-        if (!hit.collider)
-            return;
+        Adventurer clickedAdventurer = Selector.GetUnitOnClick<Adventurer>(context.adventurersLayer);
         
-        Adventurer clickedAdventurer = hit.collider.GetComponent<Adventurer>();
-
         if (!clickedAdventurer)
             return;
 

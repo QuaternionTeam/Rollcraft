@@ -1,5 +1,6 @@
 internal class Adventurer : Unit 
 { 
+    internal Quickness Quickness;
     internal bool HasDie { get; set; }
 
     internal override void Awake()

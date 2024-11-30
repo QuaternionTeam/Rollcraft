@@ -4,7 +4,7 @@ internal class BasicDie: Die
     {
         base.Awake();
 
-        faces = new[]
+        Faces = new[]
         {
             new Face(),
             new Face(),

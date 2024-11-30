@@ -103,7 +103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHealthPoints: 6
-  Die: {fileID: 3380260872488236191, guid: b40494014acdb91b3a7167d61fdc3f83, type: 3}
+  Die: {fileID: 2782661852346093209, guid: 71914c91f40b8ad7e9b874daa3184373, type: 3}
 --- !u!61 &7960138476251879738
 BoxCollider2D:
   m_ObjectHideFlags: 0

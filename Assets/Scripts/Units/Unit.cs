@@ -118,6 +118,16 @@ internal abstract class Unit : MonoBehaviour
         Glow.Stop();
         Glow.Rewind();
 
+        ResetColor();
+    }
+
+    internal void ChangeColor(Color color)
+    {
+        spriteRenderer.color = color;
+    }
+
+    internal void ResetColor()
+    {
         spriteRenderer.color = originalColor;
     }
 }
