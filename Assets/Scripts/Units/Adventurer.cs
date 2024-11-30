@@ -1,3 +1,5 @@
+using UnityEngine;
+
 internal class Adventurer : Unit 
 { 
     internal Quickness Quickness;
@@ -7,10 +9,10 @@ internal class Adventurer : Unit
     {
         base.Awake();
 
-        var dieInstance = Instantiate(Die);
-    
+        var dieInstance = Instantiate(Die, new Vector3(0, -5f, 0), Quaternion.identity, transform);
+        
         Die = dieInstance.GetComponent<Die>();
-
+        Die.SetOwner(this);
         Die.gameObject.SetActive(false);
     }
 

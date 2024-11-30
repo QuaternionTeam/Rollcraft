@@ -6,7 +6,7 @@ internal class Enemy : Unit
     {
         base.Awake();
         
-        var dieInstance = Instantiate(Die, transform.position + new Vector3(0, -3f, 0), Quaternion.identity);
+        var dieInstance = Instantiate(Die, transform.position + new Vector3(0, -3f, 0), Quaternion.identity, transform);
     
         Die = dieInstance.GetComponent<Die>();
     }
