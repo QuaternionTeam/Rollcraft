@@ -11,6 +11,7 @@ internal static class CombatInitializationData
 internal static class CombatData
 {
     internal static CombatSystem system;
+    internal static CombatHUD hud;
     internal static List<Adventurer> adventurers;
     internal static List<Enemy> enemies;
 

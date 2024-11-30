@@ -5,11 +5,12 @@ using UnityEngine;
 internal abstract class Unit : MonoBehaviour
 {
     //public abstract string Sprite { get; }
-    public int MaxHealthPoints;
+    public int MaxHealth;
     private Animation Glow;
-    internal int healthPoints;
-    internal int shield = 0;
-    public Die Die;
+
+    [SerializeField] internal Die Die;
+    [SerializeField] protected Health Health;
+
     internal List<Status> statuses = new();
     internal bool isStunned = false;
 
@@ -21,7 +22,6 @@ internal abstract class Unit : MonoBehaviour
         Glow = GetComponent<Animation>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         originalColor = spriteRenderer.color;
-        healthPoints = MaxHealthPoints;
     }
 
     internal virtual void RollDie()
@@ -36,9 +36,10 @@ internal abstract class Unit : MonoBehaviour
 
     internal void StartTurn()
     {
-        shield = 0;
+        //shield = 0;
     }
     
+/*
     internal void RecieveAttack(int damage)
     {
         int damageAfterShield = CalculateDamageAfterShield(damage);
@@ -46,12 +47,13 @@ internal abstract class Unit : MonoBehaviour
         if (damageAfterShield == 0)
             return;
 
-        RecieveDamage(damageAfterShield);
+        Damage(damageAfterShield);
 
         foreach(Status status in statuses)
             status.OnRecieveAttack(this, damageAfterShield);
     }
-
+*/
+/*
     private int CalculateDamageAfterShield(int damage)
     {
         int damageAfterShield;
@@ -69,30 +71,24 @@ internal abstract class Unit : MonoBehaviour
 
         return damageAfterShield;
     }
+*/
 
-    internal void RecieveDamage(int damage)
+    internal void Heal(int amount)
     {
-        healthPoints = Math.Max(healthPoints-damage,0);
-        //TODO: Await Dagame Anim
-        
-        if (healthPoints == 0)
-        {
-            ToDie();
-            return;
-        }
-        
-    }
-
-    internal void RecieveShield(int shield)
-    {
-        this.shield += shield;
-        //TODO: Await Shield Anim
-    }
-
-    internal void RecieveHealing(int healing)
-    {
-        healthPoints = Math.Max(healthPoints+healing, MaxHealthPoints);
         //TODO: Await Healing Anim
+        Health.Heal(amount);
+    }
+
+    internal void Damage(int amount)
+    {
+        //TODO: Await Dagame Anim
+        Health.Damage(amount);
+    }
+
+    internal void Shield(int shield)
+    {
+        //this.shield += shield;
+        //TODO: Await Shield Anim
     }
 
     internal void ApplyStatus(Status status)
@@ -103,9 +99,7 @@ internal abstract class Unit : MonoBehaviour
     internal void ToDie()
     {
         CombatData.UnitDied(this);
-
-        //Die Anim
-        //Disable object?
+        gameObject.SetActive(false);
     }
 
     internal void TurnGlowOn()

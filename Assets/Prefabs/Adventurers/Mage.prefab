@@ -102,8 +102,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64f186ae0fc52559b90711b983c32a11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealthPoints: 6
+  MaxHealth: 6
   Die: {fileID: 2782661852346093209, guid: 71914c91f40b8ad7e9b874daa3184373, type: 3}
+  Health: {fileID: -9094221931749225998, guid: 3f0e63d6ebf19d0f493942993a02b261, type: 3}
 --- !u!61 &7960138476251879738
 BoxCollider2D:
   m_ObjectHideFlags: 0

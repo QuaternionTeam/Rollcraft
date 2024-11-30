@@ -14,6 +14,9 @@ internal class Adventurer : Unit
         Die = dieInstance.GetComponent<Die>();
         Die.SetOwner(this);
         Die.gameObject.SetActive(false);
+
+        var healthInstance = CombatData.hud.InstanciateHealth(this, transform.position + new Vector3(0, -4f, 0));
+        Health = healthInstance.GetComponent<Health>();
     }
 
     internal override void RollDie()

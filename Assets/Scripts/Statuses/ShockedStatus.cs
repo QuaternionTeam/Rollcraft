@@ -2,6 +2,6 @@ internal class ShockedStatus : Status
 {
     internal override void OnRecieveAttack(Unit unit, int damage)
     {
-        unit.RecieveDamage(1);
+        unit.Damage(1);
     }
 }
