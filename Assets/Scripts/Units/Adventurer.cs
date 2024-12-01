@@ -15,7 +15,7 @@ internal class Adventurer : Unit
         Die.SetOwner(this);
         Die.gameObject.SetActive(false);
 
-        var healthInstance = CombatData.hud.InstanciateHealth(this, transform.position + new Vector3(0, -4f, 0));
+        var healthInstance = CombatData.Hud.InstanciateHealth(this, transform.position + new Vector3(0, -4f, 0));
         Health = healthInstance.GetComponent<Health>();
     }
 

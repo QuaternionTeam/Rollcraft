@@ -11,7 +11,7 @@ internal class RollAdventureDieState : CombatSystemState
     {
         base.Enter();
 
-        CombatData.chosen.RollDie();
+        CombatData.Chosen.RollDie();
     }
 
      internal override void Update()

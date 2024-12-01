@@ -103,7 +103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHealth: 7
-  Die: {fileID: 2782661852346093209, guid: 71914c91f40b8ad7e9b874daa3184373, type: 3}
+  Die: {fileID: 2782661852346093209, guid: 39bf690b4f51b3dd68699488a4584fcd, type: 3}
   Health: {fileID: -9094221931749225998, guid: 3f0e63d6ebf19d0f493942993a02b261, type: 3}
 --- !u!61 &4593977881072309806
 BoxCollider2D:

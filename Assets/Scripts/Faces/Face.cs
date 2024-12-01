@@ -7,8 +7,14 @@ internal class Face: MonoBehaviour
     //[SerializeField] private Sprite Sprite;
 
     private Die die;
-
-    internal SelectionStrategy Target = SelectionStrategy.NoTarget;
+    private Quickness Quickness => ((Adventurer) die.Owner).Quickness;
+    internal SelectionStrategy Target => Quickness switch
+        {
+            Quickness.Fast => FastSkill.Target,
+            Quickness.Neutral => NeutralSkill.Target,
+            Quickness.Slow => SlowSkill.Target,
+            _ => SelectionStrategy.NoTarget,
+        };
 
     [SerializeField] private SkillStrategy OnLandSkill;
     [SerializeField] private SkillStrategy FastSkill;
@@ -45,8 +51,6 @@ internal class Face: MonoBehaviour
 
     internal void Resolve()
     {
-        Quickness Quickness = ((Adventurer) die.Owner).Quickness;
-
         Action Skill = Quickness switch
         {
             Quickness.Fast => FastSkill.Resolve,

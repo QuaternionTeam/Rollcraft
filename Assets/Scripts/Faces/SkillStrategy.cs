@@ -7,10 +7,6 @@ internal abstract class SkillStrategy: ScriptableObject
 
     [SerializeField] internal SelectionStrategy Target;
 
-    //[SerializeField] internal int damage;
-    //[SerializeField] internal int healing;
-    //[SerializeField] internal int shielding;
-
     internal void SetEnemyTarget(Enemy enemy)
     {
         EnemyTarget = enemy;

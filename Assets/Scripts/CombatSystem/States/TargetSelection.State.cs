@@ -12,8 +12,8 @@ internal class TargetSeleccionState : CombatSystemState
         {
             { SelectionStrategy.NoTarget, new NoTarget(context) },
             { SelectionStrategy.Enemy, new TargetEnemy(context) },
-            { SelectionStrategy.Adventurer, new NoTarget(context) },
-            { SelectionStrategy.Both, new NoTarget(context) },
+            { SelectionStrategy.Adventurer, new TargetAdventurer(context) },
+            //{ SelectionStrategy.Both, new NoTarget(context) },
         };
     }
 
@@ -23,8 +23,10 @@ internal class TargetSeleccionState : CombatSystemState
 
         //Throws some null exception from the second time it enters and on
         //It doesnt really affected the system so far
-        SelectionStrategy strategy = CombatData.chosen.Die.FaceUp.Target;
+        SelectionStrategy strategy = CombatData.Chosen.Die.FaceUp.Target;
         selectionStrategy = selectionStrategies[strategy];
+
+        selectionStrategy.Enter();
 
         //TODO: Enable Reroll Button
         //TODO: Enable Confirm Button
@@ -33,6 +35,8 @@ internal class TargetSeleccionState : CombatSystemState
     internal override void Exit()
     {
         base.Exit();
+
+        selectionStrategy.Exit();
 
         //TODO: Disable Reroll Button
         //TODO: Disable Confirm Button
@@ -54,7 +58,7 @@ internal class TargetSeleccionState : CombatSystemState
         //TODO: If Confirm Button Pressed
         if(selectionStrategy.ReadyToConfirm && Input.GetKeyDown(KeyCode.Space))
         {
-            Face faceToResolve = CombatData.chosen.Die.FaceUp;
+            Face faceToResolve = CombatData.Chosen.Die.FaceUp;
             selectionStrategy.SetTarget(faceToResolve);
             context.ChangeState(Combat.ResolveAdventurerDie);
         }

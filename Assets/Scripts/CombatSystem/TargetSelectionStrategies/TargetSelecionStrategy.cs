@@ -8,5 +8,7 @@ internal abstract class TargetSelectionStrategy
     }
     internal abstract bool ReadyToConfirm { get; }
     internal abstract void Update();
+    internal abstract void Enter();
+    internal abstract void Exit();
     internal virtual void SetTarget(Face face)  { }
 }

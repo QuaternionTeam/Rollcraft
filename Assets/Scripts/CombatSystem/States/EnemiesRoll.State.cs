@@ -32,13 +32,13 @@ internal class EnemiesRollState : CombatSystemState
 
     private void SetAdventurersDice()
     {
-        foreach(Adventurer adventurer in CombatData.adventurers)
+        foreach(Adventurer adventurer in CombatData.Adventurers)
             adventurer.HasDie = true;
     }
 
     private void RollEnemiesDice()
     {
-        foreach(Enemy enemy in CombatData.enemies)
+        foreach(Enemy enemy in CombatData.Enemies)
             enemy.Die.Roll();
     }
 }
