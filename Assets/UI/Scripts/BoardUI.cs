@@ -18,6 +18,11 @@ internal class BoardUI : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
     }
 
+    public void OnDiceCustomizationButton()
+    {
+        SceneManager.LoadScene("DiceCustomization");
+    }
+
     internal void UpdateRerrolls()
     {
         rerrolls.text = "Rerrolls: " + GameData.Instance.playerData.rerrols;

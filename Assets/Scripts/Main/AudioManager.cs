@@ -17,7 +17,7 @@ internal class AudioManager : MonoBehaviour
     {
         AudioSource audioSource = PersistentGameObject.Instance.AddComponent<AudioSource>();
         audioSource.PlayOneShot(clip);
-        Destroy(gameObject, clip.length);
+        Destroy(audioSource, clip.length);
     }
 
     public void PlayClickSound() => PlayUISound(clickSound);
