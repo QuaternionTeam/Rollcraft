@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 enum SquareType
@@ -12,45 +13,45 @@ enum SquareType
 
 public class Board : MonoBehaviour
 {
-    private const int width = 5, height = 9;
-    internal static int realWidth = width * 2 - 1, realHeight = height * 2 - 1;
+    private static readonly Vector2Int walkableSize = new Vector2Int(5, 9);
+    internal static readonly Vector2Int gridSize = walkableSize * 2 - new Vector2Int(1, 1);
     private const float squareSize = 1.25f;
 
     [SerializeField] private GameObject emptyPrefab, finalBossPrefab, combatPrefab, eliteCombatPrefab, rerollPrefab;
     [SerializeField] private Player player;
 
-    private Square[,] grid = new Square[realWidth, realHeight];
-    private static int playerGridLocationX = -1, playerGridLocationY = -1;
+    private readonly Grid<Square> grid = new(gridSize, squareSize);
+    private static Vector2Int playerGridLocation = new Vector2Int(-1, -1);
 
     //[SerializeField] internal Enemy wolf, alphaWolf, goblin, goblinLancer, goblinLeader;
 
     void Start()
     {
         //combat = new List<Enemy> { wolf, wolf, wolf };
-        transform.position = new Vector3(-realWidth * squareSize / 2, -realHeight * squareSize / 2, 0f);
+        transform.position = -grid.WorldSize / 2;
         Initialize();
     }
 
-    private Square InstantiateSquare(GameObject prefab, int gridPosX, int gridPosY)
+    private Square InstantiateSquare(GameObject prefab, Vector2Int gridPosition)
     {
         Square newSquare = Instantiate(prefab, Vector3.zero, Quaternion.identity, transform).GetComponent<Square>();
-        newSquare.transform.localPosition = new Vector3(gridPosX * squareSize, gridPosY * squareSize, 0);
-        newSquare.Initialize(this, gridPosX, gridPosY);
-        grid[gridPosX - 1, gridPosY - 1] = newSquare;
+        newSquare.transform.localPosition = grid.CellWorldPosition(gridPosition);
+        newSquare.Initialize(this, gridPosition);
+        grid.SetCell(gridPosition, newSquare);
         return newSquare;
     }
 
     private int chests = 0;
     private List<int> chestList = new List<int>();
-    private Square InstantiateCombatOrChest(int gridPosX, int gridPosY)
+    private Square InstantiateCombatOrChest(Vector2Int gridPosition)
     {
-        if (chests < 4 && Random.Range(0f, 1f) < 0.3 && gridPosY > 4 && !chestList.Contains(gridPosX)) {
+        if (chests < 4 && Random.Range(0f, 1f) < 0.3 && gridPosition.y > 4 && !chestList.Contains(gridPosition.x)) {
             chests++;
-            chestList.Add(gridPosX);
-            return InstantiateSquare(rerollPrefab, gridPosX, gridPosY);
+            chestList.Add(gridPosition.x);
+            return InstantiateSquare(rerollPrefab, gridPosition);
         }
         else
-            return InstantiateSquare(combatPrefab, gridPosX, gridPosY);
+            return InstantiateSquare(combatPrefab, gridPosition);
     }
 
     private void Initialize()
@@ -58,50 +59,43 @@ public class Board : MonoBehaviour
         if (!GameData.Instance.generated)
         {
             GenerateRandomBoard();
-            for (int posX = 0; posX < realWidth; posX++)
-            {
-                for (int posY = 0; posY < realHeight; posY++)
-                {
-                    if (grid[posX, posY])
-                        GameData.Instance.grid[posX, posY] = grid[posX, posY].Type();
-                    else
-                        GameData.Instance.grid[posX, posY] = SquareType.Null;
-                }
-            }
+            foreach((Vector2Int gridPosition, Square square) in grid.Cells())
+                GameData.Instance.grid[gridPosition.x, gridPosition.y] = square ? square.Type() : SquareType.Null;
             GameData.Instance.generated = true;
-            player.transform.position = grid[(realWidth - 1) / 2, 0].transform.position;
+            player.transform.localPosition = grid.CellWorldPosition(new Vector2Int((grid.size.x - 1) / 2, 0));
             player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, -1f) - Vector3.up * 3f;
         }
         else
         {
-            for (int posX = 1; posX <= realWidth; posX++)
+            foreach ((Vector2Int gridPosition, Square square) in grid.Cells())
             {
-                for (int posY = 1; posY <= realHeight; posY++)
-                {
-                    if (GameData.Instance.grid[posX - 1, posY - 1] == SquareType.Empty)
-                        InstantiateSquare(emptyPrefab, posX, posY);
-                    else if (GameData.Instance.grid[posX - 1, posY - 1] == SquareType.Combat)
-                        InstantiateSquare(combatPrefab, posX, posY);
-                    else if (GameData.Instance.grid[posX - 1, posY - 1] == SquareType.Rerroll)
-                        InstantiateSquare(rerollPrefab, posX, posY);
-                    else if (GameData.Instance.grid[posX - 1, posY - 1] == SquareType.FinalBoss)
-                        InstantiateSquare(finalBossPrefab, posX, posY);
-                }
+                SquareType squareType = GameData.Instance.grid[gridPosition.x, gridPosition.y];
+                GameObject newSquarePrefab = null;
+                if (squareType == SquareType.Empty)
+                    newSquarePrefab = emptyPrefab;
+                else if (squareType == SquareType.Combat)
+                    newSquarePrefab = combatPrefab;
+                else if (squareType == SquareType.Rerroll)
+                    newSquarePrefab = rerollPrefab;
+                else if (squareType == SquareType.FinalBoss)
+                    newSquarePrefab = finalBossPrefab;
+                if (newSquarePrefab)
+                    InstantiateSquare(newSquarePrefab, gridPosition);
             }
-            if (playerGridLocationX == -1)
+            if (playerGridLocation.x == -1)
             {
-                player.transform.position = grid[(realWidth - 1) / 2, 0].transform.position;
+                player.transform.localPosition = grid.CellWorldPosition(new Vector2Int((grid.size.x - 1) / 2, 0));
                 player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, -1f) - Vector3.up * 3f;
             } else
             {
-                player.transform.position = grid[playerGridLocationX - 1, playerGridLocationY - 1].transform.position;
+                player.transform.position = grid.GetCell(playerGridLocation).transform.position;
                 player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, -1f);
             }
         }
 
         // Activate glow
-        foreach (Square square in grid)
-            if (square != null && IsSelectable(square.gridPosX, square.gridPosY))
+        foreach ((Vector2Int gridPosition, Square square) in grid.Cells())
+            if (square != null && IsSelectable(gridPosition))
                 square.ActivateGlow();
 
         // Move player after victory
@@ -115,50 +109,50 @@ public class Board : MonoBehaviour
         chestList = new List<int>();
 
         // Start at final position
-        int finalPosX = (realWidth + 1) / 2;
-        int finalPosY = realHeight;
-        InstantiateSquare(finalBossPrefab, finalPosX, finalPosY);
+        int finalPosX = (gridSize.x - 1) / 2;
+        int finalPosY = gridSize.y - 1;
+        InstantiateSquare(finalBossPrefab, new Vector2Int(finalPosX, finalPosY));
 
         // Final branches
-        InstantiateSquare(emptyPrefab, finalPosX - 1, finalPosY - 1);
-        InstantiateSquare(emptyPrefab, finalPosX + 1, finalPosY - 1);
+        InstantiateSquare(emptyPrefab, new Vector2Int(finalPosX - 1, finalPosY - 1));
+        InstantiateSquare(emptyPrefab, new Vector2Int(finalPosX + 1, finalPosY - 1));
 
         // Main branches
         foreach (int posX in new int[] { finalPosX - 2, finalPosX, finalPosX + 2 })
-            for (int posY = finalPosY - 1; posY >= 2; posY -= 2)
+            for (int posY = finalPosY - 1; posY > 0; posY -= 2)
             {
-                InstantiateSquare(emptyPrefab, posX, posY);
-                InstantiateCombatOrChest(posX, posY - 1);
+                InstantiateSquare(emptyPrefab, new Vector2Int(posX, posY));
+                InstantiateCombatOrChest(new Vector2Int(posX, posY - 1));
             }
 
         // Border branches
         foreach (int posX in new int[] { finalPosX - 4, finalPosX + 4 })
         {
-            int maxPosY = Random.Range(3, 8) * 2;
-            for (int posY = maxPosY; posY >= 2; posY -= 2)
+            int maxPosY = Random.Range(3, 8) * 2 + 1;
+            for (int posY = maxPosY; posY > 0; posY -= 2)
             {
-                InstantiateSquare(emptyPrefab, posX, posY);
-                InstantiateCombatOrChest(posX, posY - 1);
+                InstantiateSquare(emptyPrefab, new Vector2Int(posX, posY));
+                InstantiateCombatOrChest(new Vector2Int(posX, posY - 1));
             }
-            InstantiateSquare(emptyPrefab, finalPosX + ((posX - finalPosX) / 4 * 3), maxPosY);
+            InstantiateSquare(emptyPrefab, new Vector2Int(finalPosX + ((posX - finalPosX) / 4 * 3), maxPosY));
         }
     }
 
-    internal bool IsSelectable(int gridPosX, int gridPosY)
+    internal bool IsSelectable(Vector2Int gridPosition)
     {
-        if (playerGridLocationX == -1)
-            return gridPosY == 1;
-        else if (gridPosX == playerGridLocationX  && gridPosY == playerGridLocationY)
+        if (playerGridLocation.x == -1)
+            return gridPosition.y == 0;
+        else if (gridPosition == playerGridLocation)
             return false;
-        return PathFind(new Vector2Int(playerGridLocationX, playerGridLocationY), new Vector2Int(gridPosX, gridPosY), new List<Vector2Int>());
+        return PathFind(playerGridLocation, gridPosition, new List<Vector2Int>());
     }
 
-    internal bool IsWalkable(Vector2Int gridPos)
+    internal bool IsWalkable(Vector2Int gridPosition)
     {
         return
-            gridPos.x >= 1 && gridPos.y >= 1 &&
-            gridPos.x <= realWidth && gridPos.y <= realHeight &&
-            grid[gridPos.x - 1, gridPos.y - 1] && grid[gridPos.x - 1, gridPos.y - 1].Walkable();
+            gridPosition.x >= 0 && gridPosition.y >= 0 &&
+            gridPosition.x < gridSize.x && gridPosition.y < gridSize.y &&
+            grid.GetCell(gridPosition) && grid.GetCell(gridPosition).Walkable();
     }
 
     internal bool PathFind(Vector2Int gridPos, Vector2Int targetPos, List<Vector2Int> path)
@@ -186,10 +180,9 @@ public class Board : MonoBehaviour
     internal void MovePlayer(Vector2Int gridPosition)
     {
         player.Activate();
-        player.transform.position = grid[gridPosition.x - 1, gridPosition.y - 1].transform.position;
+        player.transform.position = grid.GetCell(gridPosition).transform.position;
         player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, -1f);
-        playerGridLocationX = gridPosition.x;
-        playerGridLocationY = gridPosition.y;
+        playerGridLocation = gridPosition;
     }
 
     // private static List<List<Enemy>> combats = null;

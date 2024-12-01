@@ -1,5 +1,4 @@
 using UnityEngine.SceneManagement;
-using UnityEngine;
 
 public class EliteCombatSquare : Square
 {
@@ -7,11 +6,11 @@ public class EliteCombatSquare : Square
 
     internal override void OnMouseDown()
     {
-        if (board.IsSelectable(gridPosX, gridPosY))
+        if (board.IsSelectable(gridPosition))
         {
             //board.MovePlayer(gridPosX, gridPosY);
             AudioManager.Instance.PlayClickSound();
-            CombatInitializationData.gridPosition = new Vector2Int(gridPosX, gridPosY);
+            CombatInitializationData.gridPosition = gridPosition;
             //CombatSystem.enemies = Board.GetRandomList();
             SceneManager.LoadScene("Combat");
         }

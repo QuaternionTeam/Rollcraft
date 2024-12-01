@@ -2,14 +2,13 @@ using UnityEngine;
 
 public abstract class Square : MonoBehaviour
 {
-    [SerializeField] internal int gridPosX, gridPosY;
+    [SerializeField] internal Vector2Int gridPosition;
     internal Board board;
 
-    internal void Initialize(Board board, int gridPosX, int gridPosY)
+    internal void Initialize(Board board, Vector2Int gridPosition)
     {
         this.board = board;
-        this.gridPosX = gridPosX;
-        this.gridPosY = gridPosY;
+        this.gridPosition = gridPosition;
     }
 
     internal abstract bool Walkable();

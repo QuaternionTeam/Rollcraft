@@ -17,7 +17,7 @@ internal class GameData : MonoBehaviour
     private string saveFilePath => Application.persistentDataPath + "/PlayerData.json";
 
     internal bool generated = false;
-    internal SquareType[,] grid = new SquareType[Board.realWidth, Board.realHeight];
+    internal SquareType[,] grid = new SquareType[Board.gridSize.x, Board.gridSize.y];
 
     void InitializePlayerData()
     {
