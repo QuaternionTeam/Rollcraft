@@ -5,6 +5,6 @@ internal class NoTarget : TargetSelectionStrategy
 
     internal override void Enter() { }
     internal override void Exit() { }
+    internal override void SetTarget(Face face) { }
     internal override void Update() { }
-
 }

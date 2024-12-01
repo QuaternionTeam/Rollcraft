@@ -7,11 +7,12 @@ internal abstract class SkillStrategy: ScriptableObject
 
     [SerializeField] internal SelectionStrategy Target;
 
-    internal void SetEnemyTarget(Enemy enemy)
+    internal virtual void SetEnemyTarget(Enemy enemy)
     {
         EnemyTarget = enemy;
     }
-    internal void SetAdventurerTarget(Adventurer adventurer)
+    
+    internal virtual void SetAdventurerTarget(Adventurer adventurer)
     {
         AdventurerTarget = adventurer;
     }

@@ -1,20 +1,13 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 internal class TargetSeleccionState : CombatSystemState
 {
-    private readonly Dictionary<SelectionStrategy, TargetSelectionStrategy> selectionStrategies;
+    private readonly TargetStrategies Strategies;
     private TargetSelectionStrategy selectionStrategy;
 
     internal TargetSeleccionState(CombatSystem context) : base(context) 
     { 
-        selectionStrategies = new() 
-        {
-            { SelectionStrategy.NoTarget, new NoTarget(context) },
-            { SelectionStrategy.Enemy, new TargetEnemy(context) },
-            { SelectionStrategy.Adventurer, new TargetAdventurer(context) },
-            //{ SelectionStrategy.Both, new NoTarget(context) },
-        };
+        Strategies = new(context);
     }
 
     internal override void Enter()
@@ -24,7 +17,7 @@ internal class TargetSeleccionState : CombatSystemState
         //Throws some null exception from the second time it enters and on
         //It doesnt really affected the system so far
         SelectionStrategy strategy = CombatData.Chosen.Die.FaceUp.Target;
-        selectionStrategy = selectionStrategies[strategy];
+        selectionStrategy = Strategies.GetStrategy(strategy);
 
         selectionStrategy.Enter();
 

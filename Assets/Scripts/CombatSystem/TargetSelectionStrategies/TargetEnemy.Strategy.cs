@@ -4,7 +4,7 @@ internal class TargetEnemy : TargetSelectionStrategy
 {
     private Enemy enemy = null;
 
-    public TargetEnemy(CombatSystem context) : base(context) { }
+    internal TargetEnemy(CombatSystem context) : base(context) { }
     internal override bool ReadyToConfirm => enemy;
     internal override void Update() 
     { 
