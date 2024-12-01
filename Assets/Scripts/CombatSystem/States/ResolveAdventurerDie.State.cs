@@ -6,9 +6,9 @@ internal class ResolveAdventurerDieState : CombatSystemState
     {
         base.Enter();
 
-        CombatData.chosen.ResolveDie();
+        CombatData.Chosen.ResolveDie();
 
-        if(CombatData.enemies.Count == 0)
+        if(CombatData.Enemies.Count == 0)
             context.ChangeState(Combat.Win); 
         else
             context.ChangeState(Combat.ChooseAdventurer);  

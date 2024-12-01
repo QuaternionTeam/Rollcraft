@@ -18,6 +18,12 @@ internal class TargetAdventurer : TargetSelectionStrategy
         if (!clickedAdventurer)
             return;
 
+        foreach(Adventurer adventurer in CombatData.Adventurers)
+            adventurer.TurnGlowOff();
+
+        if(adventurer)
+            adventurer.ResetColor();
+
         adventurer = clickedAdventurer;
         adventurer.ChangeColor(Color.green);
     }
@@ -32,5 +38,17 @@ internal class TargetAdventurer : TargetSelectionStrategy
     { 
         adventurer.ResetColor();
         adventurer = null;
+    }
+
+    internal override void Enter()
+    {
+        foreach(Adventurer adventurer in CombatData.Adventurers)
+            adventurer.TurnGlowOn();
+    }
+
+    internal override void Exit()
+    {
+        foreach(Adventurer adventurer in CombatData.Adventurers)
+            adventurer.TurnGlowOff();
     }
 }

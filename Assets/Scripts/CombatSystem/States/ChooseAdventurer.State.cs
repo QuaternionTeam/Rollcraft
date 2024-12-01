@@ -11,7 +11,7 @@ internal class ChooseAdveturersState : CombatSystemState
 
         //Enable EndTurn Button
 
-        foreach (Adventurer adventurer in CombatData.adventurers)
+        foreach (Adventurer adventurer in CombatData.Adventurers)
             if(adventurer.HasDie) 
                 adventurer.TurnGlowOn();
     }
@@ -21,7 +21,7 @@ internal class ChooseAdveturersState : CombatSystemState
         base.Exit();
 
         //Disable EndTurn Button
-        foreach (Adventurer adventurer in CombatData.adventurers)
+        foreach (Adventurer adventurer in CombatData.Adventurers)
                 adventurer.TurnGlowOff();
     }
 
@@ -40,7 +40,7 @@ internal class ChooseAdveturersState : CombatSystemState
     {
         base.EndTurn();
 
-        foreach (Adventurer adventurer in CombatData.adventurers)
+        foreach (Adventurer adventurer in CombatData.Adventurers)
             adventurer.TurnGlowOff();
 
         context.ChangeState(Combat.ResolveEnemiesDice);
@@ -54,7 +54,7 @@ internal class ChooseAdveturersState : CombatSystemState
             return;
 
         clickedAdventurer.HasDie = false;
-        CombatData.chosen = clickedAdventurer;
+        CombatData.Chosen = clickedAdventurer;
         context.ChangeState(Combat.AdventurerRoll);
     }
 }

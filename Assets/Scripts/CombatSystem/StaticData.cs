@@ -10,19 +10,36 @@ internal static class CombatInitializationData
 
 internal static class CombatData
 {
-    internal static CombatSystem system;
-    internal static CombatHUD hud;
-    internal static List<Adventurer> adventurers;
-    internal static List<Enemy> enemies;
+    internal static CombatSystem System;
+    internal static CombatHUD Hud;
+    internal static List<Adventurer> Adventurers;
+    internal static List<Enemy> Enemies;
+    internal static Adventurer Chosen;
 
-    internal static Adventurer chosen;
+    internal static Enemy RandomEnemy 
+    {
+        get 
+        {
+            int random = Random.Range(0, Enemies.Count);
+            return Enemies[random]; 
+        }
+    }
+
+    internal static Adventurer RandomAdventurer
+    {
+        get 
+        {
+            int random = Random.Range(0, Adventurers.Count);
+            return Adventurers[random]; 
+        }
+    }
 
     internal static void UnitDied(Unit unit) 
     {
         if(unit is Adventurer adventurer)
-            adventurers.Remove(adventurer);
+            Adventurers.Remove(adventurer);
 
         if(unit is Enemy enemy)
-            enemies.Remove(enemy);
+            Enemies.Remove(enemy);
     }
 }

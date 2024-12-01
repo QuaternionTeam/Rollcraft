@@ -21,7 +21,7 @@ internal class CombatSystem: MonoBehaviour
 
     internal void Start()
     {
-        CombatData.system = this;
+        CombatData.System = this;
 
         States = new()
         {
@@ -37,14 +37,14 @@ internal class CombatSystem: MonoBehaviour
             //{ Combat.Lose, new EnemiesRollState(this) },
         };
 
-        CombatData.enemies = new()
+        CombatData.Enemies = new()
         {
             Instantiate(wolf, new Vector3(-5, 5, 0), Quaternion.identity),
             Instantiate(wolf, new Vector3(0, 5.5f, 0), Quaternion.identity),
             Instantiate(wolf, new Vector3(5, 5, 0), Quaternion.identity),
         };
         
-        CombatData.adventurers = new()
+        CombatData.Adventurers = new()
         {
             Instantiate(archerPrefab),
             Instantiate(warriorPrefab),

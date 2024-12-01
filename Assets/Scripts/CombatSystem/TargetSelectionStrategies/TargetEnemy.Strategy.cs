@@ -18,6 +18,12 @@ internal class TargetEnemy : TargetSelectionStrategy
         if (!clickedEnemy)
             return;
 
+        foreach(Enemy enemy in CombatData.Enemies)
+            enemy.TurnGlowOff();
+
+        if(enemy)
+            enemy.ResetColor();
+
         enemy = clickedEnemy;
         enemy.ChangeColor(Color.red);
     }
@@ -32,5 +38,17 @@ internal class TargetEnemy : TargetSelectionStrategy
     { 
         enemy.ResetColor();
         enemy = null;
+    }
+
+    internal override void Enter()
+    {
+        foreach(Enemy enemy in CombatData.Enemies)
+            enemy.TurnGlowOn();
+    }
+
+    internal override void Exit()
+    {
+        foreach(Enemy enemy in CombatData.Enemies)
+            enemy.TurnGlowOff();
     }
 }

@@ -6,7 +6,7 @@ internal class CombatHUD : MonoBehaviour
 
     internal void Start()
     {
-        CombatData.hud = this;
+        CombatData.Hud = this;
     }
 
     internal Health InstanciateHealth(Unit unit, Vector3 position)
