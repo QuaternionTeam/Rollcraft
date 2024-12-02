@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 enum SquareType
@@ -14,11 +15,12 @@ enum SquareType
 public class Board : MonoBehaviour
 {
     private static readonly Vector2Int walkableSize = new Vector2Int(5, 9);
-    internal static readonly Vector2Int gridSize = walkableSize * 2 - new Vector2Int(1, 1);
+    internal static readonly Vector2Int gridSize = walkableSize * 2 + new Vector2Int(1, 1);
     private const float squareSize = 1.25f;
 
     [SerializeField] private GameObject emptyPrefab, finalBossPrefab, combatPrefab, eliteCombatPrefab, rerollPrefab;
     [SerializeField] private Player player;
+    [SerializeField] private WorldSizeCamera worldSizeCamera;
 
     private readonly Grid<Square> grid = new(gridSize, squareSize);
     private static Vector2Int playerGridLocation = new Vector2Int(-1, -1);
@@ -28,14 +30,14 @@ public class Board : MonoBehaviour
     void Start()
     {
         //combat = new List<Enemy> { wolf, wolf, wolf };
-        transform.position = -grid.WorldSize / 2;
+        transform.position = - (grid.WorldSize + PlayerInitialPositionOffset.Abs() + (PlayerSize / 2)) / 2;
         Initialize();
     }
 
     private Square InstantiateSquare(GameObject prefab, Vector2Int gridPosition)
     {
         Square newSquare = Instantiate(prefab, Vector3.zero, Quaternion.identity, transform).GetComponent<Square>();
-        newSquare.transform.localPosition = grid.CellWorldPosition(gridPosition);
+        newSquare.transform.localPosition = grid.CellWorldPositionCentered(gridPosition);
         newSquare.Initialize(this, gridPosition);
         grid.SetCell(gridPosition, newSquare);
         return newSquare;
@@ -54,6 +56,14 @@ public class Board : MonoBehaviour
             return InstantiateSquare(combatPrefab, gridPosition);
     }
 
+    private Vector2 PlayerInitialPositionOffset = -Vector2.up * 3f;
+    private Vector2 PlayerSize => new Vector2(player.transform.localScale.x, player.transform.localScale.y);
+    private Vector3 PlayerInitialPosition() {
+        Vector2 bottomGridPosition = grid.CellWorldPositionCentered(new Vector2Int((grid.size.x - 1) / 2, 0));
+        Vector2 position2D = bottomGridPosition + PlayerInitialPositionOffset;
+        return new Vector3(position2D.x, position2D.y, -1f);
+    }
+
     private void Initialize()
     {
         if (!GameData.Instance.generated)
@@ -62,8 +72,7 @@ public class Board : MonoBehaviour
             foreach((Vector2Int gridPosition, Square square) in grid.Cells())
                 GameData.Instance.grid[gridPosition.x, gridPosition.y] = square ? square.Type() : SquareType.Null;
             GameData.Instance.generated = true;
-            player.transform.localPosition = grid.CellWorldPosition(new Vector2Int((grid.size.x - 1) / 2, 0));
-            player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, -1f) - Vector3.up * 3f;
+            player.transform.localPosition = PlayerInitialPosition();
         }
         else
         {
@@ -83,10 +92,8 @@ public class Board : MonoBehaviour
                     InstantiateSquare(newSquarePrefab, gridPosition);
             }
             if (playerGridLocation.x == -1)
-            {
-                player.transform.localPosition = grid.CellWorldPosition(new Vector2Int((grid.size.x - 1) / 2, 0));
-                player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, -1f) - Vector3.up * 3f;
-            } else
+                player.transform.localPosition = PlayerInitialPosition();
+            else
             {
                 player.transform.position = grid.GetCell(playerGridLocation).transform.position;
                 player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, -1f);
@@ -101,6 +108,9 @@ public class Board : MonoBehaviour
         // Move player after victory
         if (CombatInitializationData.victory)
             MovePlayer(CombatInitializationData.gridPosition);
+
+        // Set view
+        worldSizeCamera.SetTargetWorldSize(grid.WorldSize + PlayerInitialPositionOffset.Abs() + (PlayerSize / 2) + new Vector2(2, 2));
     }
 
     private void GenerateRandomBoard()

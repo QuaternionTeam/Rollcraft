@@ -4,6 +4,7 @@ using UnityEngine.UI;
 internal class Camera2D : MonoBehaviour
 {
     [SerializeField] private RawImage renderUITarget;
+    [SerializeField] private Vector2 targetWorldSize;
     private Vector2 lastRenderScreenSize;
 
     void Update()

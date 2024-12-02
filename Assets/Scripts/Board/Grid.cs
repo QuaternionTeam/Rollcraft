@@ -17,6 +17,7 @@ internal class Grid<T>
     internal Vector2 WorldSize => new Vector2(size.x, size.y) * cellSize;
 
     internal Vector2 CellWorldPosition(Vector2Int gridPosition) => new Vector2(gridPosition.x, gridPosition.y) * cellSize;
+    internal Vector2 CellWorldPositionCentered(Vector2Int gridPosition) => CellWorldPosition(gridPosition) + Vector2.one * cellSize / 2;
 
     internal T GetCell(Vector2Int gridPosition) => cells[gridPosition.x, gridPosition.y];
 
