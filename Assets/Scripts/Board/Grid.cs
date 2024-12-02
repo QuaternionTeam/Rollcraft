@@ -25,12 +25,19 @@ internal class Grid<T>
     {
         cells[gridPosition.x, gridPosition.y] = cell;
     }
-
-    public IEnumerable<(Vector2Int, T)> Cells()
+    
+    public IEnumerable<Vector2Int> Positions()
     {
         for (int gridPositionX = 0; gridPositionX < size.x; gridPositionX++)
             for (int gridPositionY = 0; gridPositionY < size.y; gridPositionY++)
-                yield return (new Vector2Int(gridPositionX, gridPositionY), cells[gridPositionX, gridPositionY]);
+                yield return new Vector2Int(gridPositionX, gridPositionY);
+
+    }
+
+    public IEnumerable<(Vector2Int, T)> Cells()
+    {
+        foreach (Vector2Int gridPosition in Positions())
+            yield return (gridPosition, cells[gridPosition.x, gridPosition.y]);
 
     }
 }

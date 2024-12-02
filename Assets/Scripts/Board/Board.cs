@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -14,7 +13,7 @@ enum SquareType
 
 public class Board : MonoBehaviour
 {
-    private static readonly Vector2Int walkableSize = new Vector2Int(5, 9);
+    private static readonly Vector2Int walkableSize = new(5, 9);
     internal static readonly Vector2Int gridSize = walkableSize * 2 + new Vector2Int(1, 1);
     private const float squareSize = 1.25f;
 
@@ -23,14 +22,14 @@ public class Board : MonoBehaviour
     [SerializeField] private WorldSizeCamera worldSizeCamera;
 
     private readonly Grid<Square> grid = new(gridSize, squareSize);
-    private static Vector2Int playerGridLocation = new Vector2Int(-1, -1);
+    private static Vector2Int playerGridLocation = new(-1, -1);
 
     //[SerializeField] internal Enemy wolf, alphaWolf, goblin, goblinLancer, goblinLeader;
 
     void Start()
     {
         //combat = new List<Enemy> { wolf, wolf, wolf };
-        transform.position = - (grid.WorldSize + PlayerInitialPositionOffset.Abs() + (PlayerSize / 2)) / 2;
+        transform.position = - (grid.WorldSize + PlayerInitialPositionOffsetAbs + (PlayerSize / 2) - new Vector2(0, squareSize / 2)) / 2;
         Initialize();
     }
 
@@ -44,7 +43,7 @@ public class Board : MonoBehaviour
     }
 
     private int chests = 0;
-    private List<int> chestList = new List<int>();
+    private List<int> chestList = new();
     private Square InstantiateCombatOrChest(Vector2Int gridPosition)
     {
         if (chests < 4 && Random.Range(0f, 1f) < 0.3 && gridPosition.y > 4 && !chestList.Contains(gridPosition.x)) {
@@ -57,7 +56,8 @@ public class Board : MonoBehaviour
     }
 
     private Vector2 PlayerInitialPositionOffset = -Vector2.up * 3f;
-    private Vector2 PlayerSize => new Vector2(player.transform.localScale.x, player.transform.localScale.y);
+    private Vector2 PlayerInitialPositionOffsetAbs => -PlayerInitialPositionOffset;
+    private Vector2 PlayerSize => new(player.transform.localScale.x, player.transform.localScale.y);
     private Vector3 PlayerInitialPosition() {
         Vector2 bottomGridPosition = grid.CellWorldPositionCentered(new Vector2Int((grid.size.x - 1) / 2, 0));
         Vector2 position2D = bottomGridPosition + PlayerInitialPositionOffset;
@@ -76,7 +76,7 @@ public class Board : MonoBehaviour
         }
         else
         {
-            foreach ((Vector2Int gridPosition, Square square) in grid.Cells())
+            foreach (Vector2Int gridPosition in grid.Positions())
             {
                 SquareType squareType = GameData.Instance.grid[gridPosition.x, gridPosition.y];
                 GameObject newSquarePrefab = null;
@@ -110,7 +110,7 @@ public class Board : MonoBehaviour
             MovePlayer(CombatInitializationData.gridPosition);
 
         // Set view
-        worldSizeCamera.SetTargetWorldSize(grid.WorldSize + PlayerInitialPositionOffset.Abs() + (PlayerSize / 2) + new Vector2(2, 2));
+        worldSizeCamera.SetTargetWorldSize(grid.WorldSize + PlayerInitialPositionOffsetAbs + (PlayerSize / 2) + new Vector2(2, 2));
     }
 
     private void GenerateRandomBoard()
@@ -171,9 +171,9 @@ public class Board : MonoBehaviour
         if (gridPos == targetPos)
             return true;
         
-        Vector2Int left = new Vector2Int(gridPos.x - 1, gridPos.y);
-        Vector2Int right = new Vector2Int(gridPos.x + 1, gridPos.y);
-        Vector2Int up = new Vector2Int(gridPos.x, gridPos.y + 1);
+        Vector2Int left = new(gridPos.x - 1, gridPos.y);
+        Vector2Int right = new(gridPos.x + 1, gridPos.y);
+        Vector2Int up = new(gridPos.x, gridPos.y + 1);
 
         if (left == targetPos || right == targetPos || up == targetPos)
             return true;

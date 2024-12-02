@@ -13,6 +13,8 @@ public class WorldSizeCamera : MonoBehaviour
     [SerializeField] private Vector2 worldViewSize;
     [SerializeField] private Vector2 realScreenSize;
     [SerializeField] private Vector2 realWorldViewSize;
+    [SerializeField] private Vector4 screenPadding;
+    [SerializeField] private Vector2 cameraOffset;
 
     private Camera cameraComponent;
     private Vector2 orthographicSizeCameraRatio;
@@ -61,9 +63,9 @@ public class WorldSizeCamera : MonoBehaviour
         cameraComponent.orthographicSize = Mathf.Max(requiredOrthographicSize.x, requiredOrthographicSize.y);
 
         // Move camera
-        Vector4 screenPadding = GetRealSceenPadding(worldView);
-        Vector2 screenOffset = new Vector2(screenPadding.x + screenPadding.y, screenPadding.z + screenPadding.w);
-        Vector2 cameraOffset = screenOffset * (realWorldViewSize / realScreenSize);
+        screenPadding = GetRealSceenPadding(worldView);
+        Vector2 screenOffset = new(screenPadding.x + screenPadding.y, screenPadding.z + screenPadding.w);
+        cameraOffset = screenOffset * (realWorldViewSize / realScreenSize);
         transform.position = new Vector3(cameraOffset.x, cameraOffset.y, transform.position.z);
     }
 
