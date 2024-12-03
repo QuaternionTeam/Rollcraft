@@ -104,7 +104,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHealth: 5
   Die: {fileID: 2782661852346093209, guid: 71914c91f40b8ad7e9b874daa3184373, type: 3}
-  Health: {fileID: -9094221931749225998, guid: 3f0e63d6ebf19d0f493942993a02b261, type: 3}
+  Health: {fileID: 4767371422232104383, guid: bde60ed33c71d11399fb241a194ede43, type: 3}
 --- !u!111 &8979208186114036558
 Animation:
   m_ObjectHideFlags: 0

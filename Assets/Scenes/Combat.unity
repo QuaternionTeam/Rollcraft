@@ -734,7 +734,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23e46ea91858cdb5eb4476059aa53db2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: {fileID: -9094221931749225998, guid: 3f0e63d6ebf19d0f493942993a02b261, type: 3}
+  Health: {fileID: 4767371422232104383, guid: bde60ed33c71d11399fb241a194ede43, type: 3}
 --- !u!1 &1275653742
 GameObject:
   m_ObjectHideFlags: 0
@@ -1475,7 +1475,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be397b40d19a1914ea205f8d9d6b7eb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetWorldSize: {x: 10, y: 25}
+  targetWorldSize: {x: 15, y: 25}
   renderingArea: {fileID: 1275653743}
   screenSize: {x: 0, y: 0}
   cameraWorldViewSize: {x: 0, y: 0}
