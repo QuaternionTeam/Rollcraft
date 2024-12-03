@@ -1944,13 +1944,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetWorldSize: {x: 20, y: 20}
-  worldView: {fileID: 1056870724}
+  renderingArea: {fileID: 1056870724}
   screenSize: {x: 0, y: 0}
-  worldViewSize: {x: 0, y: 0}
-  realScreenSize: {x: 0, y: 0}
-  realWorldViewSize: {x: 0, y: 0}
-  screenPadding: {x: 0, y: 0, z: 0, w: 0}
-  cameraOffset: {x: 0, y: 0}
+  cameraWorldViewSize: {x: 0, y: 0}
+  renderingAreaScreenSize: {x: 0, y: 0}
+  renderingAreaWorldViewSize: {x: 0, y: 0}
+  renderingAreaScreenPadding: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
