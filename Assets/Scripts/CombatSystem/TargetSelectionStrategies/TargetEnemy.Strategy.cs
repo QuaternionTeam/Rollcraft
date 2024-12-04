@@ -28,7 +28,7 @@ internal class TargetEnemy : TargetSelectionStrategy
         enemy.ChangeColor(Color.red);
     }
 
-    internal override void SetTarget(Face face) 
+    internal override void SetTarget(AdventurerFace face) 
     { 
         face.SetEnemyTarget(enemy);
         ResetTarget();

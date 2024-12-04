@@ -6,10 +6,11 @@ internal class Enemy : Unit
     {
         base.Awake();
         
-        var dieInstance = Instantiate(Die, transform.position + new Vector3(0, -4f, 0), Quaternion.identity, transform);
-        Die = dieInstance.GetComponent<Die>();
+        DieInstance = Instantiate(DiePrefab, transform.position + new Vector3(0, -4f, 0), Quaternion.identity, transform);
+        DieInstance.SetOwner(this);
+        
+        HealthInstance = Instantiate(HealthPrefab, transform.position + new Vector3(0, 3f, 0), Quaternion.identity, transform);
+        HealthInstance.Attach(this);
 
-        var healthInstance = CombatData.Hud.InstanciateHealth(this, transform.position + new Vector3(0, 3f, 0));
-        Health = healthInstance.GetComponent<Health>();
     }
 }

@@ -8,8 +8,12 @@ internal abstract class Unit : MonoBehaviour
     public int MaxHealth;
     private Animation Glow;
 
-    [SerializeField] internal Die Die;
-    [SerializeField] protected Health Health;
+    [SerializeField] protected Die DiePrefab;
+    protected Die DieInstance;
+    internal Die Die => DieInstance;
+
+    [SerializeField] protected Health HealthPrefab;
+    protected Health HealthInstance;
 
     internal List<Status> statuses = new();
     internal bool isStunned = false;
@@ -26,12 +30,12 @@ internal abstract class Unit : MonoBehaviour
 
     internal virtual void RollDie()
     {
-        Die.Roll();
+        DieInstance.Roll();
     }
 
     internal virtual void ResolveDie()
     {
-        Die.Resolve();
+        DieInstance.Resolve();
     }
 
     internal void StartTurn()
@@ -76,13 +80,13 @@ internal abstract class Unit : MonoBehaviour
     internal void Heal(int amount)
     {
         //TODO: Await Healing Anim
-        Health.Heal(amount);
+        HealthInstance.Heal(amount);
     }
 
     internal void Damage(int amount)
     {
         //TODO: Await Dagame Anim
-        Health.Damage(amount);
+        HealthInstance.Damage(amount);
     }
 
     internal void Shield(int shield)

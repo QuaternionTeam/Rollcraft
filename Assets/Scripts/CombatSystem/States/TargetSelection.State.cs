@@ -51,7 +51,7 @@ internal class TargetSeleccionState : CombatSystemState
         //TODO: If Confirm Button Pressed
         if(selectionStrategy.ReadyToConfirm && Input.GetKeyDown(KeyCode.Space))
         {
-            Face faceToResolve = CombatData.Chosen.Die.FaceUp;
+            AdventurerFace faceToResolve = (AdventurerFace) CombatData.Chosen.Die.FaceUp;
             selectionStrategy.SetTarget(faceToResolve);
             context.ChangeState(Combat.ResolveAdventurerDie);
         }

@@ -24,7 +24,7 @@ internal class TargetBoth : TargetSelectionStrategy
         TargetAdventurer.Exit();
     }
 
-    internal override void SetTarget(Face face)
+    internal override void SetTarget(AdventurerFace face)
     {
         TargeyEnemy.SetTarget(face);
         TargetAdventurer.SetTarget(face);

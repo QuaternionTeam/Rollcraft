@@ -39,16 +39,16 @@ internal class CombatSystem: MonoBehaviour
 
         CombatData.Enemies = new()
         {
-            Instantiate(wolf, new Vector3(-5, 5, 0), Quaternion.identity),
-            Instantiate(wolf, new Vector3(0, 5.5f, 0), Quaternion.identity),
-            Instantiate(wolf, new Vector3(5, 5, 0), Quaternion.identity),
+            Instantiate(wolf, new Vector3(-5, 7, 0), Quaternion.identity),
+            Instantiate(wolf, new Vector3(0, 7.5f, 0), Quaternion.identity),
+            Instantiate(wolf, new Vector3(5, 7, 0), Quaternion.identity),
         };
         
         CombatData.Adventurers = new()
         {
-            Instantiate(archerPrefab),
-            Instantiate(warriorPrefab),
-            Instantiate(magePrefab),
+            Instantiate(archerPrefab, new Vector3(-5, -7, 0), Quaternion.identity),
+            Instantiate(warriorPrefab, new Vector3(0, -7.5f, 0), Quaternion.identity),
+            Instantiate(magePrefab, new Vector3(5, -7, 0), Quaternion.identity),
         };
 
         StartCoroutine(StartCombat());

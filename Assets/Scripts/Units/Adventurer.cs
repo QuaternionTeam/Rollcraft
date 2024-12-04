@@ -9,25 +9,23 @@ internal class Adventurer : Unit
     {
         base.Awake();
 
-        var dieInstance = Instantiate(Die, new Vector3(0, -5f, 0), Quaternion.identity, transform);
-        
-        Die = dieInstance.GetComponent<Die>();
-        Die.SetOwner(this);
-        Die.gameObject.SetActive(false);
+        DieInstance = Instantiate(DiePrefab, new Vector3(0, -2f, 0), Quaternion.identity, transform);
+        DieInstance.SetOwner(this);
+        DieInstance.gameObject.SetActive(false);
 
-        var healthInstance = CombatData.Hud.InstanciateHealth(this, transform.position + new Vector3(0, -4f, 0));
-        Health = healthInstance.GetComponent<Health>();
+        HealthInstance = Instantiate(HealthPrefab, transform.position + new Vector3(0, -3f, 0), Quaternion.identity, transform);
+        HealthInstance.Attach(this);
     }
 
     internal override void RollDie()
     {
         base.RollDie();
-        Die.gameObject.SetActive(true);
+        DieInstance.gameObject.SetActive(true);
     }
 
     internal override void ResolveDie()
     {
         base.ResolveDie();
-        Die.gameObject.SetActive(false);
+        DieInstance.gameObject.SetActive(false);
     }
 }
