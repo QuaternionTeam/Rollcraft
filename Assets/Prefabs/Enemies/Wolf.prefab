@@ -104,7 +104,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHealth: 5
   DiePrefab: {fileID: 1037201817027890459, guid: 8b91cd7af440ab036bc665d7b66d0a08, type: 3}
-  HealthPrefab: {fileID: 5863040323473695691, guid: 8953556c8a28486239716b236ea0dca1, type: 3}
+  HealthPrefab: {fileID: 732825305468429515, guid: 4cf46006515718875abaacacca7c2dc1, type: 3}
 --- !u!111 &8979208186114036558
 Animation:
   m_ObjectHideFlags: 0
