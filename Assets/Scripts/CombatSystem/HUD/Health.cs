@@ -42,13 +42,10 @@ internal class Health: MonoBehaviour
 
     private void SetTextProperties()
     {
-        text.outlineColor = Color.black;
-        text.outlineWidth = 0.5f; 
-
         text.text = current.ToString();
         text.color = current == max ? Color.white: Color.red;
         
         text.outlineColor = Color.black;
-        text.outlineWidth = 0.5f; 
+        text.outlineWidth = 0.3f; 
     }
 }
