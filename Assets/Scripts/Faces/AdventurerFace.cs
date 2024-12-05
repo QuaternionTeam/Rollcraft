@@ -18,6 +18,20 @@ internal class AdventurerFace: Face
             Quickness.Slow => SlowSkill.Target,
             _ => SelectionStrategy.NoTarget,
         };
+    internal override string EffectText => SkillQuickness switch
+        {
+            Quickness.Fast => FastSkill.EffectText,
+            Quickness.Neutral => NeutralSkill.EffectText,
+            Quickness.Slow => SlowSkill.EffectText,
+            _ => "None",
+        };
+
+    
+    internal string FullEffectText => 
+    "On Land: " + OnLandSkill.EffectText + "\n"+
+    NeutralSkill.EffectText + "\n"+
+    "Fast: " + FastSkill.EffectText + "\n"+
+    "Slow: " + SlowSkill.EffectText; 
 
     internal void Awake()
     {

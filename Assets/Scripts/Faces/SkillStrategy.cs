@@ -6,6 +6,7 @@ internal abstract class SkillStrategy: ScriptableObject
     protected Adventurer AdventurerTarget;
 
     [SerializeField] internal SelectionStrategy Target;
+    [SerializeField, TextArea] internal string EffectText;
 
     internal virtual void SetEnemyTarget(Enemy enemy)
     {

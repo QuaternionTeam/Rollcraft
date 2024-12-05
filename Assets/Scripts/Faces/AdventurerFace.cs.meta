@@ -1,2 +1,15 @@
 fileFormatVersion: 2
 guid: ad8cd74b3c1deff5db18a0b8a8602f8d
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - OnLandSkill: {fileID: 11400000, guid: b85478d0c90d3f5ff82da4db34659014, type: 2}
+  - FastSkill: {fileID: 11400000, guid: b85478d0c90d3f5ff82da4db34659014, type: 2}
+  - NeutralSkill: {fileID: 11400000, guid: b85478d0c90d3f5ff82da4db34659014, type: 2}
+  - SlowSkill: {fileID: 11400000, guid: b85478d0c90d3f5ff82da4db34659014, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

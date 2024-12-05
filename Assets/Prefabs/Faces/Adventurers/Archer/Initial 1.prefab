@@ -100,6 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad8cd74b3c1deff5db18a0b8a8602f8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EffectText: 
   OnLandSkill: {fileID: 11400000, guid: b85478d0c90d3f5ff82da4db34659014, type: 2}
   FastSkill: {fileID: 11400000, guid: e135c02a47ad5453e96d372d1569f1ff, type: 2}
   NeutralSkill: {fileID: 11400000, guid: e135c02a47ad5453e96d372d1569f1ff, type: 2}

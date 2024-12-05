@@ -1,2 +1,13 @@
 fileFormatVersion: 2
 guid: cc4d8dda5687d0e8a93cf2c53851c6d9
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - OnLandSkill: {fileID: 11400000, guid: b85478d0c90d3f5ff82da4db34659014, type: 2}
+  - Skill: {fileID: 11400000, guid: b85478d0c90d3f5ff82da4db34659014, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

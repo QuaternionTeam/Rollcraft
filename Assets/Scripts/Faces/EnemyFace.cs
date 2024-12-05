@@ -6,7 +6,8 @@ internal class EnemyFace : Face
     [SerializeField] private SkillStrategy Skill;
 
     internal override SelectionStrategy Target => Skill.Target;
-
+    internal override string EffectText => Skill.EffectText;
+    
     internal override void OnLand()
     {
         OnLandSkill.Resolve();

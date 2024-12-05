@@ -4,11 +4,9 @@ using UnityEngine;
 internal abstract class Face: MonoBehaviour
 {
     //internal int diceIndex;
-    //[SerializeField] private Sprite Sprite;
-
     protected Die die;
     internal abstract SelectionStrategy Target { get; }
-
+    internal abstract string EffectText { get; }
     internal void SetDie(Die die)
     {
         this.die = die;

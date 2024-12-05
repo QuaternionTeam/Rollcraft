@@ -100,6 +100,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc4d8dda5687d0e8a93cf2c53851c6d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Effect: 1 Damage
+  EffectText: 1 Damage (Random)
   OnLandSkill: {fileID: 11400000, guid: b85478d0c90d3f5ff82da4db34659014, type: 2}
   Skill: {fileID: 11400000, guid: 4bae1b751d2ce3d29bcc0cfca05afde1, type: 2}
