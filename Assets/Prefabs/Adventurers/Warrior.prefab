@@ -103,7 +103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHealth: 8
-  DiePrefab: {fileID: 6049432700122510797, guid: 47e247fb6b435c298bc783a1427f33b4, type: 3}
+  DiePrefab: {fileID: 6049432700122510797, guid: 68e560e096af392aaa3a470114af3250, type: 3}
   HealthPrefab: {fileID: 732825305468429515, guid: 4cf46006515718875abaacacca7c2dc1, type: 3}
 --- !u!61 &-3982082836287308224
 BoxCollider2D:

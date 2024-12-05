@@ -18,14 +18,14 @@ internal abstract class Unit : MonoBehaviour
     internal List<Status> statuses = new();
     internal bool isStunned = false;
 
-    private SpriteRenderer spriteRenderer;
+    protected SpriteRenderer SpriteRenderer;
     private Color originalColor;
 
     internal virtual void Awake()
     {
         Glow = GetComponent<Animation>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        originalColor = spriteRenderer.color;
+        SpriteRenderer = GetComponent<SpriteRenderer>();
+        originalColor = SpriteRenderer.color;
     }
 
     internal virtual void RollDie()
@@ -121,11 +121,11 @@ internal abstract class Unit : MonoBehaviour
 
     internal void ChangeColor(Color color)
     {
-        spriteRenderer.color = color;
+        SpriteRenderer.color = color;
     }
 
     internal void ResetColor()
     {
-        spriteRenderer.color = originalColor;
+        SpriteRenderer.color = originalColor;
     }
 }

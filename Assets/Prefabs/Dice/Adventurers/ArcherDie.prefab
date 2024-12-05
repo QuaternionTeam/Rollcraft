@@ -44,9 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e50f3d6f5d13b337b98636e0985cacdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Face1: {fileID: 4884318330846949862, guid: 64af1f695db32a4bda01bd998cc4f4e2, type: 3}
-  Face2: {fileID: 4884318330846949862, guid: 64af1f695db32a4bda01bd998cc4f4e2, type: 3}
-  Face3: {fileID: 4884318330846949862, guid: 64af1f695db32a4bda01bd998cc4f4e2, type: 3}
-  Face4: {fileID: 4884318330846949862, guid: 64af1f695db32a4bda01bd998cc4f4e2, type: 3}
-  Face5: {fileID: 4884318330846949862, guid: 64af1f695db32a4bda01bd998cc4f4e2, type: 3}
-  Face6: {fileID: 4884318330846949862, guid: 64af1f695db32a4bda01bd998cc4f4e2, type: 3}
+  Face1: {fileID: 4884318330846949862, guid: ea8dd7b93d427832da1e2ae6829a48be, type: 3}
+  Face2: {fileID: 4884318330846949862, guid: 85c9efa9be724eff0b96db0359d5079c, type: 3}
+  Face3: {fileID: 4884318330846949862, guid: aabd318315dda298285c4ff0455d0fc3, type: 3}
+  Face4: {fileID: 4884318330846949862, guid: 717a5ae609a7c534893d87873efecef7, type: 3}
+  Face5: {fileID: 4884318330846949862, guid: dc7f7d9cf7344b6f38f1a3890457ed1b, type: 3}
+  Face6: {fileID: 4884318330846949862, guid: 9d396c98c43fe0a7cbcab20c1fd79418, type: 3}

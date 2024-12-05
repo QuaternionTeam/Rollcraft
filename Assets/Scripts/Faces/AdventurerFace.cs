@@ -19,6 +19,21 @@ internal class AdventurerFace: Face
             _ => SelectionStrategy.NoTarget,
         };
 
+    internal void Awake()
+    {
+        Color color = Class switch
+        {
+            Class.Archer => new(1.0f, 0.7f, 0.3f),
+            Class.Mage => new(0.5f, 0.7f, 1.0f),
+            Class.Warrior => new(0.7f, 0.7f, 0.7f),
+            _ => Color.white,
+        };
+
+        SpriteRenderer SpriteRenderer = GetComponent<SpriteRenderer>();
+        SpriteRenderer.color = color;
+        
+    }
+
     internal void SetEnemyTarget(Enemy enemy)
     {
         //OnLandSkill.SetEnemyTarget(enemy);

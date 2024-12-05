@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8978874977743470435}
   - component: {fileID: 4884318330846949862}
   m_Layer: 0
-  m_Name: OneFace
+  m_Name: Initial 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 929302927dfb3a149a8208fcdfcc4c82, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 82143b0d2b8fe2f18b2fa395a7e80d36, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -100,9 +100,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad8cd74b3c1deff5db18a0b8a8602f8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Effect: Nothing
   OnLandSkill: {fileID: 11400000, guid: b85478d0c90d3f5ff82da4db34659014, type: 2}
-  FastSkill: {fileID: 11400000, guid: b85478d0c90d3f5ff82da4db34659014, type: 2}
-  NeutralSkill: {fileID: 11400000, guid: b85478d0c90d3f5ff82da4db34659014, type: 2}
-  SlowSkill: {fileID: 11400000, guid: b85478d0c90d3f5ff82da4db34659014, type: 2}
+  FastSkill: {fileID: 11400000, guid: e135c02a47ad5453e96d372d1569f1ff, type: 2}
+  NeutralSkill: {fileID: 11400000, guid: e135c02a47ad5453e96d372d1569f1ff, type: 2}
+  SlowSkill: {fileID: 11400000, guid: e135c02a47ad5453e96d372d1569f1ff, type: 2}
   Class: 0

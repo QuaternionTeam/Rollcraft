@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d567419776b39a418fd14d74d89988d, type: 3}
   m_Name: SixDmgAdv
   m_EditorClassIdentifier: 
-  Target: 0
-  damage: 0
+  Target: 5
+  damage: 6
