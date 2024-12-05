@@ -33,8 +33,8 @@ internal class CombatSystem: MonoBehaviour
             { Combat.ResolveAdventurerDie, new ResolveAdventurerDieState(this) },
             { Combat.ResolveEnemiesDice, new ResolveEnemiesDiceState(this) },
 
-            //{ Combat.Win, new EnemiesRollState(this) },
-            //{ Combat.Lose, new EnemiesRollState(this) },
+            { Combat.Win, new WinState(this) },
+            { Combat.Lose, new LoseState(this) },
         };
 
         CombatData.Enemies = new()
