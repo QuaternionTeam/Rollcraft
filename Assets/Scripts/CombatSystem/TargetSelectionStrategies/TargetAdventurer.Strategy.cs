@@ -13,7 +13,7 @@ internal class TargetAdventurer : TargetSelectionStrategy
 
     private void HandleTargetSelection()
     {
-        Adventurer clickedAdventurer = Selector.GetUnitOnClick<Adventurer>(context.adventurersLayer);
+        Adventurer clickedAdventurer = Selector.GetOnClick<Adventurer>(context.adventurersLayer);
         
         if (!clickedAdventurer)
             return;

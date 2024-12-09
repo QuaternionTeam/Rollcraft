@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7461380335969372715}
   - component: {fileID: 3391397767946619892}
   m_Layer: 0
-  m_Name: EnemySix
+  m_Name: Dmg 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -100,6 +100,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc4d8dda5687d0e8a93cf2c53851c6d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Effect: 4 Damage
+  EffectText: '4 Damage (Random) '
   OnLandSkill: {fileID: 11400000, guid: b85478d0c90d3f5ff82da4db34659014, type: 2}
   Skill: {fileID: 11400000, guid: 60c48af12d5d04d199cd0d9a57acfa7a, type: 2}

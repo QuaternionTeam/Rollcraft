@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3820709419916633063
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1496585540753305463}
+  - component: {fileID: 1037201817027890459}
+  m_Layer: 0
+  m_Name: GoblinDie
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1496585540753305463
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3820709419916633063}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1037201817027890459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3820709419916633063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8998faaf6d4651e638e4e24a1ba2c8fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Face1: {fileID: 2912956959568951173, guid: 8c41909a7a9b5bfd0b3755ea19773cc8, type: 3}
+  Face2: {fileID: 2912956959568951173, guid: 8c41909a7a9b5bfd0b3755ea19773cc8, type: 3}
+  Face3: {fileID: 5820346680307355434, guid: fbbc066b84c803f829519d845d5c1477, type: 3}
+  Face4: {fileID: 5820346680307355434, guid: fbbc066b84c803f829519d845d5c1477, type: 3}
+  Face5: {fileID: 3256798127345481347, guid: 3386d746dfee4d1ceb474949a82a131b, type: 3}
+  Face6: {fileID: 3256798127345481347, guid: 3386d746dfee4d1ceb474949a82a131b, type: 3}

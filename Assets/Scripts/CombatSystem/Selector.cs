@@ -2,7 +2,7 @@ using UnityEngine;
 
 internal static class Selector
 {
-    internal static T GetUnitOnClick<T>(LayerMask layer) where T : Unit
+    internal static T GetOnClick<T>(LayerMask layer) where T : Unit
     {
         if (!Input.GetMouseButtonDown(0))
             return null; 
@@ -14,11 +14,11 @@ internal static class Selector
         if (!hit.collider)
             return null;
         
-        T clickedAdventurer = hit.collider.GetComponent<T>();
+        T clicked = hit.collider.GetComponent<T>();
 
-        if (!clickedAdventurer)
+        if (!clicked)
             return null;
 
-        return clickedAdventurer;
+        return clicked;
     }
 }

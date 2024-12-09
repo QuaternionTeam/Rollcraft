@@ -9,6 +9,6 @@ internal class LoseState : CombatSystemState
         base.Enter();
 
         //Lose
-        Debug.Log("You Win");
+        Debug.Log("You Lose");
     }
 }

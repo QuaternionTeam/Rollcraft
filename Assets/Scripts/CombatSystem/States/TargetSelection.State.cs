@@ -16,6 +16,7 @@ internal class TargetSeleccionState : CombatSystemState
 
         //Throws some null exception from the second time it enters and on
         //It doesnt really affected the system so far
+        
         SelectionStrategy strategy = CombatData.Chosen.Die.FaceUp.Target;
         selectionStrategy = Strategies.GetStrategy(strategy);
 
@@ -28,6 +29,8 @@ internal class TargetSeleccionState : CombatSystemState
     internal override void Exit()
     {
         base.Exit();
+
+        CombatData.Chosen.ResetColor();
 
         selectionStrategy.Exit();
 

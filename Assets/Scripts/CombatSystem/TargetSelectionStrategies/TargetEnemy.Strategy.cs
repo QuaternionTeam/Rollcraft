@@ -13,7 +13,7 @@ internal class TargetEnemy : TargetSelectionStrategy
 
     private void HandleTargetSelection()
     {
-        Enemy clickedEnemy = Selector.GetUnitOnClick<Enemy>(context.enemiesLayer);
+        Enemy clickedEnemy = Selector.GetOnClick<Enemy>(context.enemiesLayer);
         
         if (!clickedEnemy)
             return;

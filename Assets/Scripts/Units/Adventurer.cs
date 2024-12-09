@@ -4,7 +4,8 @@ internal class Adventurer : Unit
 { 
     internal Quickness Quickness;
     internal bool HasDie { get; set; }
-
+    internal bool isTaunted = false;
+    
     internal override void Awake()
     {
         base.Awake();
